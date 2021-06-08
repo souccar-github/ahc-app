@@ -29,8 +29,16 @@ class InitUpdatePlannedSuccessfully extends PlannedState{
   final PlanningTaskModel task;
   InitUpdatePlannedSuccessfully(this.task);
 }
-class AddPlannedSuccessfully extends PlannedState{}
-class UpdatePlannedSuccessfully extends PlannedState{}
+class AddPlannedSuccessfully extends PlannedState{
+  final bool check;
+
+  AddPlannedSuccessfully(this.check);
+}
+class UpdatePlannedSuccessfully extends PlannedState{
+  final bool check;
+
+  UpdatePlannedSuccessfully(this.check);
+}
 class DeletePlannedSuccessfully extends PlannedState{}
 
 class InitAddPhysicianSuccessfully extends PlannedState{

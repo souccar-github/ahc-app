@@ -321,6 +321,7 @@ class PlannedBloc extends Bloc<PlannedEvent, PlannedState> {
     if (event is CreatePlanningTask) {
       yield PlannedLoading();
       String error, success;
+      bool check;
       var task = event.task;
       if (event.task.pharmacyId == null &&
           event.task.physicianId == null &&
@@ -331,13 +332,18 @@ class PlannedBloc extends Bloc<PlannedEvent, PlannedState> {
         error = "All Text Field Are Required";
         yield PlannedTaskError(error);
       } else {
+        await Project.apiClient.checkHolidayActual(event.task.monthId.toString(),event.task.taskDate.day.toString()).then((onValue) {
+          check = onValue;
+        }).catchError((onError) {
+          error = onError;
+        });
         await Project.apiClient.addPlannedTask(task).then((onValue) {
           success = onValue;
         }).catchError((onError) {
           error = onError;
         });
         if (error == null) {
-          yield AddPlannedSuccessfully();
+          yield AddPlannedSuccessfully(check);
         } else {
           yield PlannedTaskError(error);
         }
@@ -347,6 +353,7 @@ class PlannedBloc extends Bloc<PlannedEvent, PlannedState> {
     if (event is UpdatePlanningTask) {
       yield PlannedLoading();
       String error, success;
+      bool check;
       var task = event.task;
       if (event.task.pharmacyId == null &&
           event.task.physicianId == null &&
@@ -357,13 +364,18 @@ class PlannedBloc extends Bloc<PlannedEvent, PlannedState> {
         error = "All Text Field Are Required";
         yield PlannedTaskError(error);
       } else {
+        await Project.apiClient.checkHolidayActual(event.task.monthId.toString(),event.task.taskDate.day.toString()).then((onValue) {
+          check = onValue;
+        }).catchError((onError) {
+          error = onError;
+        });
         await Project.apiClient.updatePlannedTask(task).then((onValue) {
           success = onValue;
         }).catchError((onError) {
           error = onError;
         });
         if (error == null) {
-          yield UpdatePlannedSuccessfully();
+          yield UpdatePlannedSuccessfully(check);
         } else {
           yield PlannedTaskError(error);
         }

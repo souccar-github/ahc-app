@@ -28,6 +28,14 @@ class InitUpdateHosSuccessfully extends HospitalactualtaskState {}
 
 class HosActualLoading extends HospitalactualtaskState {}
 
-class CreateHosSuccessfully extends HospitalactualtaskState {}
+class CreateHosSuccessfully extends HospitalactualtaskState {
+  final bool check;
 
-class UpdateHosSuccessfully extends HospitalactualtaskState {}
+  CreateHosSuccessfully(this.check);
+}
+
+class UpdateHosSuccessfully extends HospitalactualtaskState {
+  final bool check;
+
+  UpdateHosSuccessfully(this.check);
+}

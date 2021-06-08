@@ -167,13 +167,23 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Day of month"),
+                                  RichText(
+                                    text: TextSpan(
+                                        text: "Day of month",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   Container(
                                     width: MediaQuery.of(context).size.width *
-                                        60 /
+                                        55 /
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
@@ -218,7 +228,17 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Physicians"),
+                                  RichText(
+                                    text: TextSpan(
+                                        text: "Physicians",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -330,7 +350,8 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                           note,
                                           _selectedItem == null
                                               ? null
-                                              : _selectedItem.id,null);
+                                              : _selectedItem.id,
+                                          null);
                                       actualTask.add(CreatePhyActual(task));
                                     }
                                   }
@@ -372,13 +393,23 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Day of month"),
+                                  RichText(
+                                    text: TextSpan(
+                                        text: "Day of month",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   Container(
                                     width: MediaQuery.of(context).size.width *
-                                        60 /
+                                        55 /
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
@@ -425,13 +456,23 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Physicians"),
+                                  RichText(
+                                    text: TextSpan(
+                                        text: "Physicians",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   Container(
                                     width: MediaQuery.of(context).size.width *
-                                        60 /
+                                        55 /
                                         100,
                                     child: autoCompleteTextField(
                                       new TextEditingController(
@@ -542,7 +583,8 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                           note,
                                           _selectedItem == null
                                               ? null
-                                              : _selectedItem.id,null);
+                                              : _selectedItem.id,
+                                          null);
                                       actualTask.add(UpdatePhyActual(task));
                                     }
                                   }
@@ -553,11 +595,43 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                           ),
                         )));
               } else if (state is CreatePhySuccessfully) {
-                Navigator.of(context).pop();
-                widget.bloc.add(GetActualTasks(widget.monthId));
+                if (state.check) {
+                  Future.delayed(Duration.zero, () async {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                        "تنبيه : هذا اليوم يوم عطلة ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      backgroundColor: Colors.orange,
+                    ));
+                  });
+                  Timer(Duration(milliseconds: 2000), () {
+                    Navigator.of(context).pop();
+                    widget.bloc.add(GetActualTasks(widget.monthId));
+                  });
+                } else {
+                  Navigator.of(context).pop();
+                  widget.bloc.add(GetActualTasks(widget.monthId));
+                }
               } else if (state is UpdatePhySuccessfully) {
-                Navigator.of(context).pop();
-                widget.bloc.add(GetActualTasks(widget.monthId));
+                if (state.check) {
+                  Future.delayed(Duration.zero, () async {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                        "تنبيه : هذا اليوم يوم عطلة ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      backgroundColor: Colors.orange,
+                    ));
+                  });
+                  Timer(Duration(milliseconds: 2000), () {
+                    Navigator.of(context).pop();
+                    widget.bloc.add(GetActualTasks(widget.monthId));
+                  });
+                } else {
+                  Navigator.of(context).pop();
+                  widget.bloc.add(GetActualTasks(widget.monthId));
+                }
               } else if (state is PhyActualLoading) {
                 return Center(child: CircularProgressIndicator());
               }

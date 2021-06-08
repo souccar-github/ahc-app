@@ -91,6 +91,12 @@ class PharmacyactualtaskBloc
     if (event is CreatePhaActual) {
       yield PhaActualLoading();
       String success, error = null;
+      bool check;
+      await Project.apiClient.checkHolidayActual(event.task.monthId.toString(),event.task.day.toString()).then((onValue) {
+          check = onValue;
+        }).catchError((onError) {
+          error = onError;
+        });
       await Project.apiClient.addActualTask(event.task).then((onValue) {
         success = onValue;
       }).catchError((onError) {
@@ -98,7 +104,7 @@ class PharmacyactualtaskBloc
       });
 
       if (error == null) {
-        yield CreatePhaSuccessfully();
+        yield CreatePhaSuccessfully(check);
       } else {
         yield PhaActualError(error);
       }
@@ -107,6 +113,12 @@ class PharmacyactualtaskBloc
     if (event is UpdatePhaActual) {
       yield PhaActualLoading();
       String success, error = null;
+      bool check;
+      await Project.apiClient.checkHolidayActual(event.task.monthId.toString(),event.task.day.toString()).then((onValue) {
+          check = onValue;
+        }).catchError((onError) {
+          error = onError;
+        });
       await Project.apiClient.updateActualTask(event.task).then((onValue) {
         success = onValue;
       }).catchError((onError) {
@@ -114,7 +126,7 @@ class PharmacyactualtaskBloc
       });
 
       if (error == null) {
-        yield UpdatePhaSuccessfully();
+        yield UpdatePhaSuccessfully(check);
       } else {
         yield PhaActualError(error);
       }

@@ -41,7 +41,7 @@ Widget autoCompleteTextField(TextEditingController _controller,
       ),
     ),
     itemFilter: (item, query) {
-      return item.toLowerCase().startsWith(query.toLowerCase());
+      return item.toLowerCase().contains(query.toLowerCase());
     },
     itemSorter: (a, b) {
       return a.compareTo(b);

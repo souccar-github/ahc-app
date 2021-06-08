@@ -63,6 +63,12 @@ class HospitalactualtaskBloc
     if (event is CreateHosActual) {
       yield HosActualLoading();
       String success, error = null;
+      bool check;
+      await Project.apiClient.checkHolidayActual(event.task.monthId.toString(),event.task.day.toString()).then((onValue) {
+          check = onValue;
+        }).catchError((onError) {
+          error = onError;
+        });
       await Project.apiClient.addActualTask(event.task).then((onValue) {
         success = onValue;
       }).catchError((onError) {
@@ -70,7 +76,7 @@ class HospitalactualtaskBloc
       });
 
       if (error == null) {
-        yield CreateHosSuccessfully();
+        yield CreateHosSuccessfully(check);
       } else {
         yield HosActualError(error);
       }
@@ -106,6 +112,12 @@ class HospitalactualtaskBloc
     if (event is UpdateHosActual) {
       yield HosActualLoading();
       String success, error = null;
+      bool check;
+      await Project.apiClient.checkHolidayActual(event.task.monthId.toString(),event.task.day.toString()).then((onValue) {
+          check = onValue;
+        }).catchError((onError) {
+          error = onError;
+        });
       await Project.apiClient.updateActualTask(event.task).then((onValue) {
         success = onValue;
       }).catchError((onError) {
@@ -113,7 +125,7 @@ class HospitalactualtaskBloc
       });
 
       if (error == null) {
-        yield UpdateHosSuccessfully();
+        yield UpdateHosSuccessfully(check);
       } else {
         yield HosActualError(error);
       }

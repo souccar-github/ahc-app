@@ -174,7 +174,8 @@ class Project {
                 'Authorization': '$username:$password',
               });
       if (response.statusCode == 200) {
-        return response.body as bool;
+        var value = response.body;
+        return value.toLowerCase() == "true";
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -535,9 +536,13 @@ class Project {
           ListItemModel h = ListItemModel.fromJson(_items[i]);
           items.add(h);
         }
+        if (items.length == 0){
+          return Future.error("لا يمكن إدخال مهمة تقييم لعدم وجود موظفين تحت إشرافك");
+        }
         if (items != null) {
           return items;
         }
+        
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1509,6 +1514,40 @@ class Project {
       var password = await SharedPref.pref.getPassword();
       final response = await Statics.httpClient.get(
           Statics.BaseUrl + "/api/physicianVisit/getReportData/$id",
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            'Authorization': '$username:$password',
+          });
+      if (response.statusCode == 200) {
+        List<ActualVisitModel> _list = new List<ActualVisitModel>();
+        List list = json.decode(response.body);
+        for (var i = 0; i < list.length; i++) {
+          ActualVisitModel h = ActualVisitModel.fromJson(list[i]);
+          _list.add(h);
+        }
+        if (_list != null) {
+          return _list;
+        }
+      } else {
+        error = (jsonDecode(response.body))["Message"] as String;
+        return Future.error(error ?? "Unknown Error");
+      }
+    } on SocketException {
+      return Future.error("check your internet connection");
+    } on http.ClientException {
+      return Future.error("check your internet connection");
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future<List<ActualVisitModel>> getOtherReport(int id) async {
+    String error;
+    try {
+      var username = await SharedPref.pref.getUserName();
+      var password = await SharedPref.pref.getPassword();
+      final response = await Statics.httpClient.get(
+          Statics.BaseUrl + "/api/otherTask/getReportData/$id",
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',

@@ -12,6 +12,11 @@ class GetPhysiciansReport extends ReportEvent {
   GetPhysiciansReport(this.id);
 }
 
+class GetOthersReport extends ReportEvent {
+  final int id;
+  GetOthersReport(this.id);
+}
+
 class GetPharmaciesReport extends ReportEvent {
   final int id;
   GetPharmaciesReport(this.id);

@@ -94,15 +94,6 @@ class _AppDrawer extends State<AppDrawer> {
             },
           ),
           _createDrawerItem(
-            icon: FontAwesomeIcons.signOutAlt,
-            text: 'Sign out',
-            onTap: () async {
-              await SharedPref.pref.setUserName(null);
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/', ModalRoute.withName('/'));
-            },
-          ),
-          _createDrawerItem(
             icon: FontAwesomeIcons.copy,
             text: 'Copy from planned to actual',
             onTap: () async {
@@ -116,6 +107,15 @@ class _AppDrawer extends State<AppDrawer> {
             onTap: () async {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => CopyPlannedToPlanned()));
+            },
+          ),
+          _createDrawerItem(
+            icon: FontAwesomeIcons.signOutAlt,
+            text: 'Sign out',
+            onTap: () async {
+              await SharedPref.pref.setUserName(null);
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/', ModalRoute.withName('/'));
             },
           ),
         ],

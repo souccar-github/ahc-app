@@ -25,9 +25,8 @@ Widget viewCalender(
         weekdayTextStyle: TextStyle(color: Color.fromRGBO(7, 163, 163, 1)),
         onDayPressed: (DateTime date, List<Event> events) =>
             onDayPressed(date, events),
-        firstDayOfWeek: 6,
         weekendTextStyle: TextStyle(
-          color: Colors.red,
+          color: Colors.black,
         ),
         onDayLongPressed: onDayLongPressed,
         headerTextStyle: TextStyle(
@@ -41,17 +40,6 @@ Widget viewCalender(
         selectedDayButtonColor: Color.fromRGBO(7, 163, 163, 0.3),
         selectedDayBorderColor: Color.fromRGBO(7, 163, 163, 0.3),
         thisMonthDayBorderColor: Color.fromRGBO(7, 163, 163, 0.3),
-        customDayBuilder: (
-          bool isSelectable,
-          int index,
-          bool isSelectedDay,
-          bool isToday,
-          bool isPrevMonthDay,
-          TextStyle textStyle,
-          bool isNextMonthDay,
-          bool isThisMonthDay,
-          DateTime day,
-        ) {},
         weekFormat: false,
         markedDateIconMaxShown: 0,
         markedDateMoreCustomTextStyle:
@@ -61,13 +49,14 @@ Widget viewCalender(
           shape: BoxShape.circle,
         ),
         showIconBehindDayText: true,
+        
         markedDateShowIcon: true,
         markedDateIconBuilder: (event) {
           return event.icon;
         },
         markedDatesMap: _events,
         markedDateMoreShowTotal: true,
-        height: 330.0,
+        height: 350.0,
         selectedDateTime: dateTime,
         isScrollable: false,
       ));

@@ -10,7 +10,7 @@ import 'package:template/Bloc/Project/bloc/hosproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/phaproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/physicianproduct_bloc.dart';
 import 'package:template/Models/Project/ActualVisitModel.dart';
-import 'package:template/Widgets/General/Drawer.dart';
+import 'package:template/Widgets/Project/Drawer.dart';
 import 'package:template/Widgets/General/List.dart';
 
 import 'Products.dart';
@@ -48,6 +48,9 @@ class _Report extends State<Report> {
       case 2:
         reportBloc.add(GetHospitalsReport(widget.id));
         break;
+      case 3:
+        reportBloc.add(GetOthersReport(widget.id));
+        break;
     }
   }
 
@@ -62,22 +65,29 @@ class _Report extends State<Report> {
                 FontAwesomeIcons.stethoscope,
                 color: Color.fromRGBO(7, 163, 163, 1),
               ),
-              icon: Icon(FontAwesomeIcons.stethoscope),
+              icon: Icon(FontAwesomeIcons.stethoscope ,color: Color.fromRGBO(7, 163, 163, 1),),
               title: Text("")),
           BottomNavigationBarItem(
               activeIcon: Icon(
                 FontAwesomeIcons.handHoldingMedical,
                 color: Color.fromRGBO(7, 163, 163, 1),
               ),
-              icon: Icon(FontAwesomeIcons.handHoldingMedical),
+              icon: Icon(FontAwesomeIcons.handHoldingMedical ,color: Color.fromRGBO(7, 163, 163, 1),),
               title: Text("")),
           BottomNavigationBarItem(
               activeIcon: Icon(
                 FontAwesomeIcons.hospital,
                 color: Color.fromRGBO(7, 163, 163, 1),
               ),
-              icon: Icon(FontAwesomeIcons.hospital),
+              icon: Icon(FontAwesomeIcons.hospital, color: Color.fromRGBO(7, 163, 163, 1),),
               title: Text("")),
+          BottomNavigationBarItem(
+              activeIcon: Icon(
+                FontAwesomeIcons.boxes,
+                color: Color.fromRGBO(7, 163, 163, 1),
+              ),
+              icon: Icon(FontAwesomeIcons.boxes, color: Color.fromRGBO(7, 163, 163, 1),),
+              title: Text(""))
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
@@ -130,6 +140,12 @@ class _Report extends State<Report> {
                   report = state.report;
                 });
               });
+            } else if (state is OthersReportSuccessfully) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                setState(() {
+                  report = state.report;
+                });
+              });
             } else if (state is ReportLoading) {
               return Center(child: CircularProgressIndicator());
             }
@@ -143,8 +159,12 @@ class _Report extends State<Report> {
                     itemBuilder: (context, index) => Column(
                           children: [
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
                                       children: [
@@ -198,30 +218,68 @@ class _Report extends State<Report> {
                                             style:
                                                 TextStyle(color: Colors.black)),
                                       ],
-                                    )
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.crop_square),
+                                        Text("Dates Of Visit : ",
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    7, 163, 163, 1),
+                                                fontSize: 18)),
+                                        Column(
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.bottomRight,
+                                              height: report[index]
+                                                              .dates
+                                                              .length
+                                                              .toDouble() *
+                                                          15 <
+                                                      60
+                                                  ? report[index]
+                                                          .dates
+                                                          .length
+                                                          .toDouble() *
+                                                      15
+                                                  : 60,
+                                              width: 200,
+                                              child: ListView.builder(
+                                                physics:
+                                                    const AlwaysScrollableScrollPhysics(),
+                                                itemCount:
+                                                    report[index].dates.length,
+                                                itemBuilder: (context, i) =>
+                                                    Column(
+                                                  children: [
+                                                    Text(
+                                                      report[index]
+                                                              .dates[i]
+                                                              .day
+                                                              .toString() +
+                                                          " / " +
+                                                          report[index]
+                                                              .dates[i]
+                                                              .month
+                                                              .toString() +
+                                                          " / " +
+                                                          report[index]
+                                                              .dates[i]
+                                                              .year
+                                                              .toString(),
+                                                      style: TextStyle(
+                                                          color: Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ],
                                 ),
-                                // VerticalDivider(
-                                //   thickness: 50,
-                                //   width: 50,
-                                //   color: Color.fromRGBO(7, 163, 163, 1),
-                                // ),
-                                // report[index].visitType == "PhysicianVisit"
-                                //     ? Icon(
-                                //         FontAwesomeIcons.stethoscope,
-                                //         color: Color.fromRGBO(7, 163, 163, 1),
-                                //       )
-                                //     : report[index].visitType == "PharmacyVisit"
-                                //         ? Icon(
-                                //             FontAwesomeIcons.handHoldingMedical,
-                                //             color:
-                                //                 Color.fromRGBO(7, 163, 163, 1),
-                                //           )
-                                //         : Icon(
-                                //             FontAwesomeIcons.hospital,
-                                //             color:
-                                //                 Color.fromRGBO(7, 163, 163, 1),
-                                //           )
                               ],
                             ),
                             Divider(
