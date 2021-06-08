@@ -26,6 +26,11 @@ class HospitalsReportSuccessfully extends ReportState {
   HospitalsReportSuccessfully(this.report);
 }
 
+class OthersReportSuccessfully extends ReportState {
+  final List<ActualVisitModel> report;
+  OthersReportSuccessfully(this.report);
+}
+
 class PlannedReportSuccessfully extends ReportState {
   final List<ActualVisitModel> report;
   PlannedReportSuccessfully(this.report);

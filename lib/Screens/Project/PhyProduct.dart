@@ -195,7 +195,18 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Products"),
+                                  RichText(
+                                            text: TextSpan(
+                                                text:"Products",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -225,7 +236,18 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Adoptions"),
+                                  RichText(
+                                            text: TextSpan(
+                                                text:"Adoptions",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -421,7 +443,18 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Products"),
+                                  RichText(
+                                            text: TextSpan(
+                                                text:"Products",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -456,7 +489,18 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Adoptions"),
+                                  RichText(
+                                            text: TextSpan(
+                                                text:"Adoptions",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                   SizedBox(
                                     width: 20,
                                   ),

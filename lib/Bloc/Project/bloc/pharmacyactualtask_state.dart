@@ -26,6 +26,14 @@ class InitAddPhaActualSuccessfully extends PharmacyactualtaskState {
 
 class PhaActualLoading extends PharmacyactualtaskState {}
 
-class CreatePhaSuccessfully extends PharmacyactualtaskState {}
+class CreatePhaSuccessfully extends PharmacyactualtaskState {
+  final bool check;
 
-class UpdatePhaSuccessfully extends PharmacyactualtaskState {}
+  CreatePhaSuccessfully(this.check);
+}
+
+class UpdatePhaSuccessfully extends PharmacyactualtaskState {
+  final bool check;
+
+  UpdatePhaSuccessfully(this.check);
+}

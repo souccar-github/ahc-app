@@ -139,7 +139,17 @@ class _Clinic extends State<Clinic> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Clinics"),
+                                  RichText(
+                                    text: TextSpan(
+                                        text: "Clinics",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -157,7 +167,17 @@ class _Clinic extends State<Clinic> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Visit Types"),
+                                  RichText(
+                                    text: TextSpan(
+                                        text: "Visit Types",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -242,7 +262,17 @@ class _Clinic extends State<Clinic> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Clinics"),
+                                   RichText(
+                                    text: TextSpan(
+                                        text: "Clinics",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -260,7 +290,17 @@ class _Clinic extends State<Clinic> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Visit Types"),
+                                   RichText(
+                                    text: TextSpan(
+                                        text: "Visit Types",
+                                        style: TextStyle(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                              text: ' *',
+                                              style:
+                                                  TextStyle(color: Colors.red))
+                                        ]),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),

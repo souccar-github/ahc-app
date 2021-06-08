@@ -46,6 +46,21 @@ class ReportBloc extends Bloc<ReportEvent, ReportState> {
         yield ReportError(error);
       }
     }
+    if (event is GetOthersReport) {
+      List<ActualVisitModel> report;
+      String error;
+      yield ReportLoading();
+      await Project.apiClient.getOtherReport(event.id).then((onValue) {
+        report = onValue;
+      }).catchError((onError) {
+        error = onError;
+      });
+      if (error == null) {
+        yield OthersReportSuccessfully(report);
+      } else {
+        yield ReportError(error);
+      }
+    }
     if (event is GetPharmaciesReport) {
       List<ActualVisitModel> report;
       String error;

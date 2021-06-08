@@ -293,7 +293,16 @@ class _PlannedTask extends State<PlannedTask> {
                             ),
                             DelayedAnimation(
                               child: Row(children: <Widget>[
-                                Text("Task Type"),
+                                RichText(
+                                  text: TextSpan(
+                                      text: "Task Type",
+                                      style: TextStyle(color: Colors.black),
+                                      children: [
+                                        TextSpan(
+                                            text: ' *',
+                                            style: TextStyle(color: Colors.red))
+                                      ]),
+                                ),
                                 SizedBox(
                                   width: 20,
                                 ),
@@ -355,7 +364,18 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Physicians"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Physicians",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -439,7 +459,18 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Pharmacies"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Pharmacies",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -521,7 +552,18 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Hospitals"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Hospitals",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -575,7 +617,18 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Employees"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Employees",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -629,7 +682,18 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Other Task"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Other Task",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -701,9 +765,24 @@ class _PlannedTask extends State<PlannedTask> {
                                 }
 
                                 if (state is AddPlannedSuccessfully) {
+                                  if (state.check) {
+                                  Future.delayed(Duration.zero, () async {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                        "تنبيه : هذا اليوم يوم عطلة ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      backgroundColor: Colors.orange,
+                    ));
+                  });
+                  Timer(Duration(milliseconds: 2000), () {
                                   Navigator.of(context).pop();
                                   widget.bloc
                                       .add(GetPlannedTasks(widget.monthId));
+                                      });} else {
+                  Navigator.of(context).pop();
+                  widget.bloc.add(GetPlannedTasks(widget.monthId));
+                }
                                 }
                                 return Container();
                               },
@@ -764,7 +843,16 @@ class _PlannedTask extends State<PlannedTask> {
                             ),
                             DelayedAnimation(
                               child: Row(children: <Widget>[
-                                Text("Task Type"),
+                                RichText(
+                                  text: TextSpan(
+                                      text: "Task Type",
+                                      style: TextStyle(color: Colors.black),
+                                      children: [
+                                        TextSpan(
+                                            text: ' *',
+                                            style: TextStyle(color: Colors.red))
+                                      ]),
+                                ),
                                 SizedBox(
                                   width: 20,
                                 ),
@@ -827,7 +915,18 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Physicians"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Physicians",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -913,7 +1012,18 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Pharmacies"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Pharmacies",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -997,7 +1107,18 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Hospitals"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Hospitals",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -1053,7 +1174,18 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Employees"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Employees",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -1109,7 +1241,18 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Other Task"),
+                                          RichText(
+                                            text: TextSpan(
+                                                text: "Other Task",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                      text: ' *',
+                                                      style: TextStyle(
+                                                          color: Colors.red))
+                                                ]),
+                                          ),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -1184,9 +1327,24 @@ class _PlannedTask extends State<PlannedTask> {
                                 }
 
                                 if (state is UpdatePlannedSuccessfully) {
+                                  if (state.check) {
+                                  Future.delayed(Duration.zero, () async {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                        "تنبيه : هذا اليوم يوم عطلة ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      backgroundColor: Colors.orange,
+                    ));
+                  });
+                  Timer(Duration(milliseconds: 2000), () {
                                   Navigator.of(context).pop();
                                   widget.bloc
                                       .add(GetPlannedTasks(widget.monthId));
+                                      });} else {
+                  Navigator.of(context).pop();
+                  widget.bloc.add(GetPlannedTasks(widget.monthId));
+                }
                                 }
 
                                 if (state is PlannedLoading) {

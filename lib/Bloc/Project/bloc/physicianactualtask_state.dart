@@ -26,6 +26,14 @@ class InitAddPhyActualSuccessfully extends PhysicianactualtaskState {
 
 class PhyActualLoading extends PhysicianactualtaskState {}
 
-class CreatePhySuccessfully extends PhysicianactualtaskState {}
+class CreatePhySuccessfully extends PhysicianactualtaskState {
+  final bool check;
 
-class UpdatePhySuccessfully extends PhysicianactualtaskState {}
+  CreatePhySuccessfully(this.check);
+}
+
+class UpdatePhySuccessfully extends PhysicianactualtaskState {
+  final bool check;
+
+  UpdatePhySuccessfully(this.check);
+}

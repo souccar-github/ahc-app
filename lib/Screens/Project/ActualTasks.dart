@@ -12,14 +12,15 @@ import 'package:template/Bloc/Project/bloc/actual_bloc.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Screens/Project/Clinics.dart';
 import 'package:template/Screens/Project/HospitalActualTask.dart';
+import 'package:template/Screens/Project/OtherActualTask.dart';
 import 'package:template/Screens/Project/PharmacyActualTask.dart';
 import 'package:template/Screens/Project/PhysicianActualTask.dart';
 import 'package:template/Screens/Project/Products.dart';
 import 'package:template/Screens/Project/PhyProduct.dart';
 import 'package:template/Screens/Project/Report.dart';
-import 'package:template/Widgets/General/Drawer.dart';
 import 'package:template/Widgets/General/List.dart';
 import 'package:template/Widgets/Project/Calender.dart';
+import 'package:template/Widgets/Project/Drawer.dart';
 
 class ActualTasks extends StatefulWidget {
   final int month, year, id;
@@ -64,6 +65,9 @@ class _ActualTasks extends State<ActualTasks> {
         )
       ];
     }
+    if (task.type == "OtherTask") {
+      return [];
+    }
     return [
       IconSlideAction(
         caption: '',
@@ -91,6 +95,11 @@ class _ActualTasks extends State<ActualTasks> {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) =>
                 HospitalActualTask(widget.id, true, task, actualTasksBloc)));
+        break;
+      case "OtherTask":
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                OtherActualTask(widget.id, true, task, actualTasksBloc)));
         break;
     }
   }
@@ -145,6 +154,17 @@ class _ActualTasks extends State<ActualTasks> {
                           widget.id, false, null, actualTasksBloc)));
                 },
                 leading: Icon(FontAwesomeIcons.hospital),
+              )),
+          PopupMenuItem<String>(
+              value: 'Add Other Task',
+              child: ListTile(
+                title: Text("Add Other Task"),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => OtherActualTask(
+                          widget.id, false, null, actualTasksBloc)));
+                },
+                leading: Icon(FontAwesomeIcons.boxes),
               )),
         ],
         onSelected: (_) {},
