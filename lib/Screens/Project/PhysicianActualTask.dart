@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/actual_bloc.dart';
 import 'package:template/Bloc/Project/bloc/physicianactualtask_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ActualModel.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
@@ -111,7 +112,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Physician Actual Task',
+          Localization.of(context).getTranslatedValue("PhysicianActualTask"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -169,7 +170,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Day of month",
+                                        text: Localization.of(context).getTranslatedValue("Dayofmonth"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -187,7 +188,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the number of day in month ...",
+                                        Localization.of(context).getTranslatedValue("Typethenumberofdayinmonth"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -202,7 +203,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is short list"),
+                                  Text(Localization.of(context).getTranslatedValue("Isshortlist")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -230,7 +231,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Physicians",
+                                        text: Localization.of(context).getTranslatedValue("Physicians"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -249,7 +250,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                     child: autoCompleteTextField(
                                       new TextEditingController(),
                                       drList,
-                                      "Choose a physician ...",
+                                      Localization.of(context).getTranslatedValue("Chooseaphysician"),
                                       (value) {
                                         setState(() {
                                           ListItemModel phy = state.drList
@@ -268,11 +269,11 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Priod"),
+                                  Text(Localization.of(context).getTranslatedValue("Priod")),
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  dropdown(context, _selectedItem, "Priod",
+                                  dropdown(context, _selectedItem, Localization.of(context).getTranslatedValue("Priod"),
                                       _dropdownMenuItems, onChangeDropdownItem),
                                 ]),
                                 delay: 100,
@@ -282,7 +283,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Important"),
+                                  Text(Localization.of(context).getTranslatedValue("IsImportant")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -302,7 +303,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -312,7 +313,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -326,13 +327,13 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_formKey.currentState.validate()) {
                                     if (phyId == null) {
                                       Scaffold.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(
-                                          "Physician Field Is Required",
+                                          Localization.of(context).getTranslatedValue("PhysicianFieldIsRequired"),
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         backgroundColor: Colors.red,
@@ -395,7 +396,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Day of month",
+                                        text: Localization.of(context).getTranslatedValue("Dayofmonth"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -413,7 +414,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the number of day in month ...",
+                                        Localization.of(context).getTranslatedValue("Typethenumberofdayinmonth"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -428,7 +429,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is short list"),
+                                  Text(Localization.of(context).getTranslatedValue("Isshortlist")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -458,7 +459,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Physicians",
+                                        text: Localization.of(context).getTranslatedValue("Physicians"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -478,7 +479,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                       new TextEditingController(
                                           text: widget.task.title),
                                       drList,
-                                      "Choose a physician ...",
+                                      Localization.of(context).getTranslatedValue("Chooseaphysician"),
                                       (value) {
                                         setState(() {
                                           ListItemModel phy = state.drList
@@ -497,11 +498,11 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Priod"),
+                                  Text(Localization.of(context).getTranslatedValue("Priod")),
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  dropdown(context, _selectedItem, "Priod",
+                                  dropdown(context, _selectedItem, Localization.of(context).getTranslatedValue("Priod"),
                                       _dropdownMenuItems, onChangeDropdownItem),
                                 ]),
                                 delay: 100,
@@ -511,7 +512,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Important"),
+                                  Text(Localization.of(context).getTranslatedValue("IsImportant")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -531,7 +532,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -541,7 +542,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -555,13 +556,13 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_formKey.currentState.validate()) {
                                     if (phyId == null) {
                                       Scaffold.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(
-                                          "Physician Field Is Required",
+                                          Localization.of(context).getTranslatedValue("PhysicianFieldIsRequired"),
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         backgroundColor: Colors.red,
@@ -599,7 +600,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                   Future.delayed(Duration.zero, () async {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
+                        Localization.of(context).getTranslatedValue("AttentionThisDayIsHoliday"),
                         style: TextStyle(color: Colors.black),
                       ),
                       backgroundColor: Colors.orange,
@@ -618,7 +619,7 @@ class _PhysicianActualTask extends State<PhysicianActualTask> {
                   Future.delayed(Duration.zero, () async {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
+                        Localization.of(context).getTranslatedValue("AttentionThisDayIsHoliday"),
                         style: TextStyle(color: Colors.black),
                       ),
                       backgroundColor: Colors.orange,

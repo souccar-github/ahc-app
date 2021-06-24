@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/planned_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Models/Project/PlanningTaskModel.dart';
@@ -218,7 +219,7 @@ class _PlannedTask extends State<PlannedTask> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Planned Task',
+          Localization.of(context).getTranslatedValue("PlannedTask"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -295,7 +296,8 @@ class _PlannedTask extends State<PlannedTask> {
                               child: Row(children: <Widget>[
                                 RichText(
                                   text: TextSpan(
-                                      text: "Task Type",
+                                      text: Localization.of(context)
+                                          .getTranslatedValue("TaskType"),
                                       style: TextStyle(color: Colors.black),
                                       children: [
                                         TextSpan(
@@ -306,8 +308,13 @@ class _PlannedTask extends State<PlannedTask> {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                dropdown(context, _selectedItem, "Task Type",
-                                    _dropdownMenuItems, onChangeDropdownItem),
+                                dropdown(
+                                    context,
+                                    _selectedItem,
+                                    Localization.of(context)
+                                        .getTranslatedValue("TaskType"),
+                                    _dropdownMenuItems,
+                                    onChangeDropdownItem),
                               ]),
                               delay: 100,
                             ),
@@ -335,7 +342,9 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Is short list"),
+                                          Text(Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "Isshortlist")),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -366,7 +375,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Physicians",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Physicians"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -388,7 +399,9 @@ class _PlannedTask extends State<PlannedTask> {
                                             child: autoCompleteTextField(
                                               new TextEditingController(),
                                               list,
-                                              "Choose a physician ...",
+                                              Localization.of(context)
+                                                  .getTranslatedValue(
+                                                      "Chooseaphysician..."),
                                               (value) {
                                                 setState(() {
                                                   ListItemModel phy = state.list
@@ -408,7 +421,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => createPlannedTask(
                                                 "PhysicianVisit",
                                                 widget.monthId,
@@ -430,7 +444,9 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Is short list"),
+                                          Text(Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "Isshortlist")),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -461,7 +477,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Pharmacies",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Pharmacies"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -483,7 +501,9 @@ class _PlannedTask extends State<PlannedTask> {
                                               child: autoCompleteTextField(
                                                   new TextEditingController(),
                                                   list,
-                                                  "Choose a pharmacy ...",
+                                                  Localization.of(context)
+                                                      .getTranslatedValue(
+                                                          "Chooseapharmacy..."),
                                                   (value) {
                                                 setState(() {
                                                   ListItemModel pha = state.list
@@ -501,7 +521,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => createPlannedTask(
                                                 "PharmacyVisit",
                                                 widget.monthId,
@@ -523,7 +544,9 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Is short list"),
+                                          Text(Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "Isshortlist")),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -554,7 +577,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Hospitals",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Hospitals"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -576,7 +601,9 @@ class _PlannedTask extends State<PlannedTask> {
                                             child: autoCompleteTextField(
                                                 new TextEditingController(),
                                                 list,
-                                                "Choose a hospital ...",
+                                                Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Chooseahospital..."),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel hos = state.list
@@ -594,7 +621,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => createPlannedTask(
                                                 "HospitalVisit",
                                                 widget.monthId,
@@ -619,7 +647,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Employees",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Employees"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -641,7 +671,9 @@ class _PlannedTask extends State<PlannedTask> {
                                             child: autoCompleteTextField(
                                                 new TextEditingController(),
                                                 list,
-                                                "Choose an Employee ...",
+                                                Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "ChooseanEmployee..."),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel emp = state.list
@@ -659,7 +691,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => createPlannedTask(
                                                 "Coaching",
                                                 widget.monthId,
@@ -684,7 +717,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Other Task",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "OtherTask"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -706,7 +741,10 @@ class _PlannedTask extends State<PlannedTask> {
                                             child: autoCompleteTextField(
                                                 new TextEditingController(),
                                                 list,
-                                                "Choose a Task ...", (value) {
+                                                Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "ChooseaTask..."),
+                                                (value) {
                                               setState(() {
                                                 ListItemModel other = state.list
                                                     .firstWhere((element) =>
@@ -723,7 +761,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => createPlannedTask(
                                                 "OtherTask",
                                                 widget.monthId,
@@ -747,7 +786,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => createPlannedTask(
                                                 "Vacation",
                                                 widget.monthId,
@@ -766,23 +806,28 @@ class _PlannedTask extends State<PlannedTask> {
 
                                 if (state is AddPlannedSuccessfully) {
                                   if (state.check) {
-                                  Future.delayed(Duration.zero, () async {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      backgroundColor: Colors.orange,
-                    ));
-                  });
-                  Timer(Duration(milliseconds: 2000), () {
-                                  Navigator.of(context).pop();
-                                  widget.bloc
-                                      .add(GetPlannedTasks(widget.monthId));
-                                      });} else {
-                  Navigator.of(context).pop();
-                  widget.bloc.add(GetPlannedTasks(widget.monthId));
-                }
+                                    Future.delayed(Duration.zero, () async {
+                                      Scaffold.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "تنبيه : هذا اليوم يوم عطلة "),
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        backgroundColor: Colors.orange,
+                                      ));
+                                    });
+                                    Timer(Duration(milliseconds: 2000), () {
+                                      Navigator.of(context).pop();
+                                      widget.bloc
+                                          .add(GetPlannedTasks(widget.monthId));
+                                    });
+                                  } else {
+                                    Navigator.of(context).pop();
+                                    widget.bloc
+                                        .add(GetPlannedTasks(widget.monthId));
+                                  }
                                 }
                                 return Container();
                               },
@@ -845,7 +890,8 @@ class _PlannedTask extends State<PlannedTask> {
                               child: Row(children: <Widget>[
                                 RichText(
                                   text: TextSpan(
-                                      text: "Task Type",
+                                      text: Localization.of(context)
+                                          .getTranslatedValue("TaskType"),
                                       style: TextStyle(color: Colors.black),
                                       children: [
                                         TextSpan(
@@ -859,7 +905,8 @@ class _PlannedTask extends State<PlannedTask> {
                                 dropdown(
                                     context,
                                     _selectedItem,
-                                    "Task Type",
+                                    Localization.of(context)
+                                        .getTranslatedValue("Task Type"),
                                     _dropdownMenuItems,
                                     onChangeDropdownItemUpdate),
                               ]),
@@ -886,7 +933,9 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Is short list"),
+                                          Text(Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "Isshortlist")),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -917,7 +966,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Physicians",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Physicians"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -940,7 +991,9 @@ class _PlannedTask extends State<PlannedTask> {
                                               new TextEditingController(
                                                   text: widget.task.title),
                                               list,
-                                              "Choose a physician ...",
+                                              Localization.of(context)
+                                                  .getTranslatedValue(
+                                                      "Chooseaphysician..."),
                                               (value) {
                                                 setState(() {
                                                   ListItemModel phy = state.list
@@ -960,7 +1013,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => updatePlannedTask(
                                                 widget.task.id,
                                                 "PhysicianVisit",
@@ -983,7 +1037,9 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Is short list"),
+                                          Text(Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "Isshortlist")),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -1014,7 +1070,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Pharmacies",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Pharmacies"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -1037,7 +1095,9 @@ class _PlannedTask extends State<PlannedTask> {
                                                   new TextEditingController(
                                                       text: widget.task.title),
                                                   list,
-                                                  "Choose a pharmacy ...",
+                                                  Localization.of(context)
+                                                      .getTranslatedValue(
+                                                          "Chooseapharmacy..."),
                                                   (value) {
                                                 setState(() {
                                                   ListItemModel pha = state.list
@@ -1055,7 +1115,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => updatePlannedTask(
                                                 widget.task.id,
                                                 "PharmacyVisit",
@@ -1078,7 +1139,9 @@ class _PlannedTask extends State<PlannedTask> {
                                     children: <Widget>[
                                       DelayedAnimation(
                                         child: Row(children: <Widget>[
-                                          Text("Is short list"),
+                                          Text(Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "Isshortlist")),
                                           SizedBox(
                                             width: 20,
                                           ),
@@ -1109,7 +1172,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Hospitals",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Hospitals"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -1132,7 +1197,9 @@ class _PlannedTask extends State<PlannedTask> {
                                                 new TextEditingController(
                                                     text: widget.task.title),
                                                 list,
-                                                "Choose a hospital ...",
+                                                Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Chooseahospital..."),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel hos = state.list
@@ -1150,7 +1217,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => updatePlannedTask(
                                                 widget.task.id,
                                                 "HospitalVisit",
@@ -1176,7 +1244,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Employees",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "Employees"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -1199,7 +1269,9 @@ class _PlannedTask extends State<PlannedTask> {
                                                 new TextEditingController(
                                                     text: widget.task.title),
                                                 list,
-                                                "Choose an Employee ...",
+                                                Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "ChooseanEmployee..."),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel emp = state.list
@@ -1217,7 +1289,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => updatePlannedTask(
                                                 widget.task.id,
                                                 "Coaching",
@@ -1243,7 +1316,9 @@ class _PlannedTask extends State<PlannedTask> {
                                         child: Row(children: <Widget>[
                                           RichText(
                                             text: TextSpan(
-                                                text: "Other Task",
+                                                text: Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "OtherTask"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -1266,7 +1341,10 @@ class _PlannedTask extends State<PlannedTask> {
                                                 new TextEditingController(
                                                     text: widget.task.title),
                                                 list,
-                                                "Choose a Task ...", (value) {
+                                                Localization.of(context)
+                                                    .getTranslatedValue(
+                                                        "ChooseaTask..."),
+                                                (value) {
                                               setState(() {
                                                 ListItemModel other = state.list
                                                     .firstWhere((element) =>
@@ -1283,7 +1361,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => updatePlannedTask(
                                                 widget.task.id,
                                                 "OtherTask",
@@ -1308,7 +1387,8 @@ class _PlannedTask extends State<PlannedTask> {
                                       ),
                                       DelayedAnimation(
                                         child: button(
-                                            "Submit",
+                                            Localization.of(context)
+                                                .getTranslatedValue("Submit"),
                                             () => updatePlannedTask(
                                                 widget.task.id,
                                                 "Vacation",
@@ -1328,23 +1408,28 @@ class _PlannedTask extends State<PlannedTask> {
 
                                 if (state is UpdatePlannedSuccessfully) {
                                   if (state.check) {
-                                  Future.delayed(Duration.zero, () async {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      backgroundColor: Colors.orange,
-                    ));
-                  });
-                  Timer(Duration(milliseconds: 2000), () {
-                                  Navigator.of(context).pop();
-                                  widget.bloc
-                                      .add(GetPlannedTasks(widget.monthId));
-                                      });} else {
-                  Navigator.of(context).pop();
-                  widget.bloc.add(GetPlannedTasks(widget.monthId));
-                }
+                                    Future.delayed(Duration.zero, () async {
+                                      Scaffold.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          Localization.of(context)
+                                              .getTranslatedValue(
+                                                  "تنبيه : هذا اليوم يوم عطلة "),
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        backgroundColor: Colors.orange,
+                                      ));
+                                    });
+                                    Timer(Duration(milliseconds: 2000), () {
+                                      Navigator.of(context).pop();
+                                      widget.bloc
+                                          .add(GetPlannedTasks(widget.monthId));
+                                    });
+                                  } else {
+                                    Navigator.of(context).pop();
+                                    widget.bloc
+                                        .add(GetPlannedTasks(widget.monthId));
+                                  }
                                 }
 
                                 if (state is PlannedLoading) {

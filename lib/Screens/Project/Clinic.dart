@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/clinic_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Models/Project/ClinicModel.dart';
@@ -81,7 +82,7 @@ class _Clinic extends State<Clinic> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Clinic',
+          Localization.of(context).getTranslatedValue("Clinic"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -141,7 +142,7 @@ class _Clinic extends State<Clinic> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Clinics",
+                                        text: Localization.of(context).getTranslatedValue("Clinics"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -156,7 +157,7 @@ class _Clinic extends State<Clinic> {
                                   dropdown(
                                       context,
                                       _clinicSelectedItem,
-                                      "Clinic",
+                                      Localization.of(context).getTranslatedValue("Clinic"),
                                       _clinicDropdownMenuItems,
                                       onChangeDropdownItemClinic),
                                 ]),
@@ -169,7 +170,7 @@ class _Clinic extends State<Clinic> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Visit Types",
+                                        text: Localization.of(context).getTranslatedValue("VisitTypes"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -184,7 +185,7 @@ class _Clinic extends State<Clinic> {
                                   dropdown(
                                       context,
                                       _visitTypeSelectedItem,
-                                      "Visit Type",
+                                      Localization.of(context).getTranslatedValue("VisitType"),
                                       _visitTypeDropdownMenuItems,
                                       onChangeDropdownItemVisitType),
                                 ]),
@@ -194,12 +195,12 @@ class _Clinic extends State<Clinic> {
                                 height: 20,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_clinicSelectedItem == null ||
                                       _visitTypeSelectedItem == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Clinic and Visit Type Fields Are Required",
+                                        Localization.of(context).getTranslatedValue("ClinicandVisitTypeFieldsAreRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,
@@ -264,7 +265,7 @@ class _Clinic extends State<Clinic> {
                                 child: Row(children: <Widget>[
                                    RichText(
                                     text: TextSpan(
-                                        text: "Clinics",
+                                        text: Localization.of(context).getTranslatedValue("Clinics"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -279,7 +280,7 @@ class _Clinic extends State<Clinic> {
                                   dropdown(
                                       context,
                                       _clinicSelectedItem,
-                                      "Clinic",
+                                      Localization.of(context).getTranslatedValue("Clinic"),
                                       _clinicDropdownMenuItems,
                                       onChangeDropdownItemClinic),
                                 ]),
@@ -292,7 +293,7 @@ class _Clinic extends State<Clinic> {
                                 child: Row(children: <Widget>[
                                    RichText(
                                     text: TextSpan(
-                                        text: "Visit Types",
+                                        text: Localization.of(context).getTranslatedValue("VisitTypes"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -307,7 +308,7 @@ class _Clinic extends State<Clinic> {
                                   dropdown(
                                       context,
                                       _visitTypeSelectedItem,
-                                      "Visit Type",
+                                      Localization.of(context).getTranslatedValue("VisitType"),
                                       _visitTypeDropdownMenuItems,
                                       onChangeDropdownItemVisitType),
                                 ]),
@@ -317,12 +318,12 @@ class _Clinic extends State<Clinic> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_clinicSelectedItem == null ||
                                       _visitTypeSelectedItem == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Clinic and Visit Type Fields Are Required",
+                                        Localization.of(context).getTranslatedValue("ClinicandVisitTypeFieldsAreRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,

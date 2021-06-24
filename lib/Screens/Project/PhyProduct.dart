@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/physicianproduct_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Models/Project/PhyProductModel.dart';
@@ -107,7 +108,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Physician Product',
+          Localization.of(context).getTranslatedValue("PhysicianProduct"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -170,7 +171,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Count"),
+                                  Text(Localization.of(context).getTranslatedValue("Count")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -180,7 +181,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeCountTextField,
-                                        "Type the count of products ...",
+                                        Localization.of(context).getTranslatedValue("Typethecountofproducts"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -197,7 +198,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text:"Products",
+                                                text:Localization.of(context).getTranslatedValue("Products"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -217,7 +218,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                     child: autoCompleteTextField(
                                       new TextEditingController(),
                                       prList,
-                                      "Choose a Product ...",
+                                      Localization.of(context).getTranslatedValue("ChooseaProduct"),
                                       (value) {
                                         setState(() {
                                           ListItemModel product = state.proList
@@ -238,7 +239,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text:"Adoptions",
+                                                text:Localization.of(context).getTranslatedValue("Adoptions"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -254,7 +255,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                   dropdown(
                                       context,
                                       _adoptionSelectedItem,
-                                      "Adoption",
+                                      Localization.of(context).getTranslatedValue("Adoption"),
                                       _adoptionDropdownMenuItems,
                                       onChangeDropdownItemAdoption),
                                 ]),
@@ -265,14 +266,14 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Provided Materials"),
+                                  Text(Localization.of(context).getTranslatedValue("ProvidedMaterials")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _providedMaterialSelectedItem,
-                                      "Provided Material",
+                                      Localization.of(context).getTranslatedValue("ProvidedMaterial"),
                                       _providedMaterialDropdownMenuItems,
                                       onChangeDropdownItemProvidedMaterial),
                                 ]),
@@ -283,14 +284,14 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Complaints"),
+                                  Text(Localization.of(context).getTranslatedValue("Complaints")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _complaintSelectedItem,
-                                      "Complaint",
+                                      Localization.of(context).getTranslatedValue("Complaint"),
                                       _complaintDropdownMenuItems,
                                       onChangeDropdownItemComplaint),
                                 ]),
@@ -301,7 +302,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -311,7 +312,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -325,12 +326,12 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (productId == null ||
                                       _adoptionSelectedItem == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Product and Adoption Fields Are Required",
+                                        Localization.of(context).getTranslatedValue("ProductandAdoptionFieldsAreRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,
@@ -418,7 +419,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Count"),
+                                  Text(Localization.of(context).getTranslatedValue("Count")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -428,7 +429,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeCountTextField,
-                                        "Type the count of products ...",
+                                        Localization.of(context).getTranslatedValue("Typethecountofproducts"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -445,7 +446,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text:"Products",
+                                                text:Localization.of(context).getTranslatedValue("Products"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -470,7 +471,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                                   state.product.productId)
                                               .title),
                                       prList,
-                                      "Choose a Product ...",
+                                      Localization.of(context).getTranslatedValue("ChooseaProduct"),
                                       (value) {
                                         setState(() {
                                           ListItemModel product = state.proList
@@ -491,7 +492,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text:"Adoptions",
+                                                text:Localization.of(context).getTranslatedValue("Adoptions"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -507,7 +508,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                   dropdown(
                                       context,
                                       _adoptionSelectedItem,
-                                      "Adoption",
+                                      Localization.of(context).getTranslatedValue("Adoption"),
                                       _adoptionDropdownMenuItems,
                                       onChangeDropdownItemAdoption),
                                 ]),
@@ -518,14 +519,14 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Provided Materials"),
+                                  Text(Localization.of(context).getTranslatedValue("ProvidedMaterials")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _providedMaterialSelectedItem,
-                                      "Provided Material",
+                                      Localization.of(context).getTranslatedValue("ProvidedMaterial"),
                                       _providedMaterialDropdownMenuItems,
                                       onChangeDropdownItemProvidedMaterial),
                                 ]),
@@ -536,14 +537,14 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Complaints"),
+                                  Text(Localization.of(context).getTranslatedValue("Complaints")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _complaintSelectedItem,
-                                      "Complaint",
+                                      Localization.of(context).getTranslatedValue("Complaint"),
                                       _complaintDropdownMenuItems,
                                       onChangeDropdownItemComplaint),
                                 ]),
@@ -554,7 +555,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -564,7 +565,7 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -578,12 +579,12 @@ class _PhysicianProduct extends State<PhysicianProduct> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (productId == null ||
                                       _adoptionSelectedItem == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Product and Adoption Fields Are Required",
+                                        Localization.of(context).getTranslatedValue("ProductandAdoptionFieldsAreRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,

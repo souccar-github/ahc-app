@@ -3,10 +3,13 @@ import 'dart:core';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Screens/General/SplashScreen.dart';
 import 'package:template/Screens/Project/CopyPlannedToActual.dart';
 import 'package:template/Screens/Project/CopyPlannedToPlanned.dart';
 import 'package:template/SharedPref/SharedPref.dart';
+
+import '../../main.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -42,9 +45,10 @@ class _AppDrawer extends State<AppDrawer> {
         children: <Widget>[
           Positioned(
               bottom: 12.0,
-              left: 16.0,
               child: Text(
-                "Welcome .. " + username,
+                Localization.of(context).getTranslatedValue("Welcome") +
+                    " .. " +
+                    username,
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -65,7 +69,7 @@ class _AppDrawer extends State<AppDrawer> {
             color: Color.fromRGBO(7, 163, 163, 1),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 8.0),
+            padding: EdgeInsets.only(left: 8.0, right: 8.0),
             child: Text(text),
           )
         ],
@@ -87,7 +91,7 @@ class _AppDrawer extends State<AppDrawer> {
           ),
           _createDrawerItem(
             icon: FontAwesomeIcons.home,
-            text: 'Home',
+            text: Localization.of(context).getTranslatedValue("Home"),
             onTap: () async {
               Navigator.of(context)
                   .pushNamedAndRemoveUntil('/', ModalRoute.withName('/'));
@@ -95,7 +99,8 @@ class _AppDrawer extends State<AppDrawer> {
           ),
           _createDrawerItem(
             icon: FontAwesomeIcons.copy,
-            text: 'Copy from planned to actual',
+            text: Localization.of(context)
+                .getTranslatedValue("Copyfromplannedtoactual"),
             onTap: () async {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => CopyPlannedToActual()));
@@ -103,7 +108,8 @@ class _AppDrawer extends State<AppDrawer> {
           ),
           _createDrawerItem(
             icon: FontAwesomeIcons.copy,
-            text: 'Copy from planned to Planned',
+            text: Localization.of(context)
+                .getTranslatedValue('CopyfromplannedtoPlanned'),
             onTap: () async {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => CopyPlannedToPlanned()));
@@ -111,7 +117,25 @@ class _AppDrawer extends State<AppDrawer> {
           ),
           _createDrawerItem(
             icon: FontAwesomeIcons.signOutAlt,
-            text: 'Sign out',
+            text: Localization.of(context).getTranslatedValue("SwitchLanguage"),
+            onTap: () async {
+              var locale = null;
+              locale = await SharedPref.pref.getLocale();
+              if (locale == "en") {
+                MyApp.setLocale(
+                    context, Locale.fromSubtags(languageCode: 'ar'));
+                await SharedPref.pref.setLocale("ar");
+              } else {
+                MyApp.setLocale(
+                    context, Locale.fromSubtags(languageCode: 'en'));
+                await SharedPref.pref.setLocale("en");
+              }
+              
+            },
+          ),
+          _createDrawerItem(
+            icon: FontAwesomeIcons.signOutAlt,
+            text: Localization.of(context).getTranslatedValue("Signout"),
             onTap: () async {
               await SharedPref.pref.setUserName(null);
               Navigator.of(context)

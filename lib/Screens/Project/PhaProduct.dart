@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/phaproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/physicianproduct_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ActualModel.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
@@ -90,7 +91,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Pharmacy Product',
+          Localization.of(context).getTranslatedValue("PharmacyProduct"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -146,7 +147,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Count"),
+                                  Text(Localization.of(context).getTranslatedValue("Count")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -156,7 +157,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeCountTextField,
-                                        "Type the count of products ...",
+                                        Localization.of(context).getTranslatedValue("Typethecountofproducts"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -173,7 +174,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text:"Products",
+                                                text:Localization.of(context).getTranslatedValue("Products"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -193,7 +194,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                     child: autoCompleteTextField(
                                       new TextEditingController(),
                                       prList,
-                                      "Choose a Product ...",
+                                      Localization.of(context).getTranslatedValue("ChooseaProduct"),
                                       (value) {
                                         setState(() {
                                           ListItemModel product = state.proList
@@ -212,14 +213,14 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("ProvidedMaterials"),
+                                  Text(Localization.of(context).getTranslatedValue("ProvidedMaterials")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _providedMaterialSelectedItem,
-                                      "ProvidedMaterial",
+                                      Localization.of(context).getTranslatedValue("ProvidedMaterial"),
                                       _providedMaterialDropdownMenuItems,
                                       onChangeDropdownItemProvidedMaterial),
                                 ]),
@@ -230,7 +231,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -240,7 +241,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -252,7 +253,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Exist"),
+                                  Text(Localization.of(context).getTranslatedValue("IsExist")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -271,11 +272,11 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (productId == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Product Field Is Required",
+                                        Localization.of(context).getTranslatedValue("ProductFieldIsRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,
@@ -346,7 +347,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Count"),
+                                  Text(Localization.of(context).getTranslatedValue("Count")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -356,7 +357,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeCountTextField,
-                                        "Type the count of products ...",
+                                        Localization.of(context).getTranslatedValue("Typethecountofproducts"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -373,7 +374,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text:"Products",
+                                                text:Localization.of(context).getTranslatedValue("Products"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -398,7 +399,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                                   state.product.productId)
                                               .title),
                                       prList,
-                                      "Choose a Product ...",
+                                      Localization.of(context).getTranslatedValue("ChooseaProduct"),
                                       (value) {
                                         setState(() {
                                           ListItemModel product = state.proList
@@ -417,14 +418,14 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("ProvidedMaterials"),
+                                  Text(Localization.of(context).getTranslatedValue("ProvidedMaterials")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _providedMaterialSelectedItem,
-                                      "ProvidedMaterial",
+                                      Localization.of(context).getTranslatedValue("ProvidedMaterial"),
                                       _providedMaterialDropdownMenuItems,
                                       onChangeDropdownItemProvidedMaterial),
                                 ]),
@@ -435,7 +436,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -445,7 +446,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -457,7 +458,7 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Exist"),
+                                  Text(Localization.of(context).getTranslatedValue("IsExist")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -476,11 +477,11 @@ class _PharmacyProduct extends State<PharmacyProduct> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (productId == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Product Field Is Required",
+                                        Localization.of(context).getTranslatedValue("ProductFieldIsRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,

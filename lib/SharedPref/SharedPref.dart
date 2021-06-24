@@ -27,9 +27,20 @@ class SharedPref {
     return username;
   }
 
+  Future<String> getLocale() async {
+    final SharedPreferences p = await _getSharedPref;
+    String locale = p.getString("locale");
+    return locale;
+  }
+
   Future<Void> setPassword(String password) async {
     final SharedPreferences p = await _getSharedPref;
     p.setString("password", password);
+  }
+
+  Future<Void> setLocale(String locale) async {
+    final SharedPreferences p = await _getSharedPref;
+    p.setString("locale", locale);
   }
 
   Future<String> getPassword() async {

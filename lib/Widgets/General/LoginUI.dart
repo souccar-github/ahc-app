@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/General/bloc/auth_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Widgets/General/Button.dart';
 import 'package:template/Widgets/General/TextFormField.dart';
 
@@ -43,7 +44,7 @@ class _LoginState extends State<LoginUI> {
 
   String validator(String text) {
     if (text == "" || text == null) {
-      return "Required";
+      return Localization.of(context).getTranslatedValue("required");
     }
   }
 
@@ -73,7 +74,7 @@ class _LoginState extends State<LoginUI> {
                         width: 200,
                       )),
                   DelayedAnimation(
-                    child: textFormField(_onChangedUsername, "Username", true,
+                    child: textFormField(_onChangedUsername, Localization.of(context).getTranslatedValue("username"), true,
                         TextInputType.text, false, 1, null),
                     delay: delayedAmount + 400,
                   ),
@@ -81,7 +82,7 @@ class _LoginState extends State<LoginUI> {
                     height: 50.0,
                   ),
                   DelayedAnimation(
-                    child: textFormField(_onChangedPassword, "Password", true,
+                    child: textFormField(_onChangedPassword, Localization.of(context).getTranslatedValue("password"), true,
                         TextInputType.text, true, 1, null),
                     delay: delayedAmount + 600,
                   ),
@@ -99,7 +100,7 @@ class _LoginState extends State<LoginUI> {
                           );
                         } else {
                           return DelayedAnimation(
-                            child: button("Login", _onPressed),
+                            child: button(Localization.of(context).getTranslatedValue("login"), _onPressed),
                             delay: delayedAmount + 800,
                           );
                         }

@@ -6,6 +6,7 @@ import 'package:template/Bloc/Project/bloc/clinic_bloc.dart';
 import 'package:template/Bloc/Project/bloc/hosproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/phaproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/physicianproduct_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Screens/Project/ClinicProduct.dart';
 import 'package:template/Screens/Project/PhaProduct.dart';
@@ -89,7 +90,7 @@ class _Products extends State<Products> {
           drawer: AppDrawer(),
           appBar: AppBar(
             title: Text(
-              'Physician Products',
+              Localization.of(context).getTranslatedValue("PhysicianProducts"),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline6,
             ),
@@ -144,7 +145,7 @@ class _Products extends State<Products> {
           drawer: AppDrawer(),
           appBar: AppBar(
             title: Text(
-              'Pharmacy Products',
+              Localization.of(context).getTranslatedValue("PharmacyProducts"),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline6,
             ),
@@ -199,7 +200,7 @@ class _Products extends State<Products> {
           drawer: AppDrawer(),
           appBar: AppBar(
             title: Text(
-              'Clinic Products',
+              Localization.of(context).getTranslatedValue("ClinicProducts"),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline6,
             ),

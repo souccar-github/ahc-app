@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:template/Bloc/Project/bloc/plannedtoplanned_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Widgets/General/Animation/delayed_animation.dart';
 import 'package:template/Widgets/General/Button.dart';
@@ -54,7 +55,8 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Copy Planned To Planned',
+          Localization.of(context).getTranslatedValue("CopyPlannedToPlanned")
+          ,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -97,7 +99,7 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2100),
                       icon: Icon(Icons.event),
-                      dateLabelText: 'From Date',
+                      dateLabelText: Localization.of(context).getTranslatedValue("FromDate"),
                       onChanged: (val) {
                         setState(() {
                           fromDate = val;
@@ -113,7 +115,7 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2100),
                       icon: Icon(Icons.event),
-                      dateLabelText: 'To Date',
+                      dateLabelText: Localization.of(context).getTranslatedValue("ToDate"),
                       onChanged: (val) {
                         setState(() {
                           toDate = val;
@@ -136,7 +138,7 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2100),
                     icon: Icon(Icons.event),
-                    dateLabelText: 'From Date',
+                    dateLabelText:Localization.of(context).getTranslatedValue("FromDate"),
                     onChanged: (val) {
                       setState(() {
                         fromDate = val;
@@ -152,7 +154,7 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2100),
                     icon: Icon(Icons.event),
-                    dateLabelText: 'To Date',
+                    dateLabelText: Localization.of(context).getTranslatedValue("ToDate"),
                     onChanged: (val) {
                       setState(() {
                         toDate = val;
@@ -162,7 +164,7 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
                     },
                   ),
                   MultiSelect(
-                      title: "Planned Tasks",
+                      title: Localization.of(context).getTranslatedValue("PlannedTasks"),
                       selected: selectedTasks,
                       items: buildList(state.tasks),
                       icon: Icons.timer,
@@ -172,7 +174,7 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
                   ),
                   selectedTasks.length > 0
                       ? DelayedAnimation(
-                          child: button("Submit", () {
+                          child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                             bloc.add(
                                 PlannedToPlannedSubmit(selectedTasks, toDate));
                           }),
@@ -187,7 +189,7 @@ class _CopyPlannedToPlanned extends State<CopyPlannedToPlanned> {
                   () => Navigator.of(context).pop());
               Scaffold.of(context).showSnackBar(SnackBar(
                 content: Text(
-                  "Successfully Submitted",
+                  Localization.of(context).getTranslatedValue("SuccessfullySubmitted"),
                   style: TextStyle(color: Colors.white),
                 ),
                 backgroundColor: Colors.green,

@@ -8,6 +8,7 @@ Widget autoCompleteTextField(TextEditingController _controller,
   return AutoCompleteTextField<String>(
     clearOnSubmit: false,
     controller: _controller,
+    suggestionsAmount: 10,
     suggestions: _suggestions,
     style: TextStyle(color: Colors.black, fontSize: 16.0),
     decoration: new InputDecoration(

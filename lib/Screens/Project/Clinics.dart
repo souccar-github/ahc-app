@@ -7,6 +7,7 @@ import 'package:template/Bloc/Project/bloc/clinic_bloc.dart';
 import 'package:template/Bloc/Project/bloc/hosproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/phaproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/physicianproduct_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Screens/Project/Clinic.dart';
 import 'package:template/Widgets/Project/Drawer.dart';
@@ -53,7 +54,7 @@ class _Clinics extends State<Clinics> {
       drawer: AppDrawer(),
       appBar: AppBar(
         title: Text(
-          'Clinics',
+          Localization.of(context).getTranslatedValue("Clinics"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),

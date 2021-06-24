@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/actual_bloc.dart';
 import 'package:template/Bloc/Project/bloc/hospitalactualtask_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ActualModel.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
@@ -95,7 +96,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Hospital Actual Task',
+          Localization.of(context).getTranslatedValue("HospitalActualTask"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -153,7 +154,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Day of month",
+                                        text: Localization.of(context).getTranslatedValue("Dayofmonth"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -171,7 +172,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the number of day in month ...",
+                                        Localization.of(context).getTranslatedValue("Typethenumberofdayinmonth"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -186,7 +187,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is short list"),
+                                  Text(Localization.of(context).getTranslatedValue("Isshortlist")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -214,7 +215,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Hospitals",
+                                        text: Localization.of(context).getTranslatedValue("Hospitals"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -233,7 +234,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                     child: autoCompleteTextField(
                                       new TextEditingController(),
                                       hosList,
-                                      "Choose a hospital ...",
+                                      Localization.of(context).getTranslatedValue("Chooseahospital"),
                                       (value) {
                                         setState(() {
                                           ListItemModel hos = state.hoList
@@ -252,11 +253,11 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Priod"),
+                                  Text(Localization.of(context).getTranslatedValue("Priod")),
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  dropdown(context, _selectedItem, "Priod",
+                                  dropdown(context, _selectedItem, Localization.of(context).getTranslatedValue("Priod"),
                                       _dropdownMenuItems, onChangeDropdownItem),
                                 ]),
                                 delay: 100,
@@ -266,7 +267,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Important"),
+                                  Text(Localization.of(context).getTranslatedValue("IsImportant")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -286,7 +287,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -296,7 +297,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -310,13 +311,13 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_formKey.currentState.validate()) {
                                     if (hosId == null) {
                                       Scaffold.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(
-                                          "Hospital Field Is Required",
+                                          Localization.of(context).getTranslatedValue("HospitalFieldIsRequired"),
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         backgroundColor: Colors.red,
@@ -389,7 +390,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Day of month",
+                                        text: Localization.of(context).getTranslatedValue("Dayofmonth"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -407,7 +408,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the number of day in month ...",
+                                        Localization.of(context).getTranslatedValue("Typethenumberofdayinmonth"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -422,7 +423,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is short list"),
+                                  Text(Localization.of(context).getTranslatedValue("Isshortlist")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -452,7 +453,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text: "Hospitals",
+                                        text: Localization.of(context).getTranslatedValue("Hospitals"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -472,7 +473,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                       new TextEditingController(
                                           text: widget.task.title),
                                       hosList,
-                                      "Choose a hospital ...",
+                                      Localization.of(context).getTranslatedValue("Chooseahospital"),
                                       (value) {
                                         setState(() {
                                           ListItemModel hos = state.hosList
@@ -491,11 +492,11 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Priod"),
+                                  Text(Localization.of(context).getTranslatedValue("Priod")),
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  dropdown(context, _selectedItem, "Priod",
+                                  dropdown(context, _selectedItem, Localization.of(context).getTranslatedValue("Priod"),
                                       _dropdownMenuItems, onChangeDropdownItem),
                                 ]),
                                 delay: 100,
@@ -505,7 +506,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Important"),
+                                  Text(Localization.of(context).getTranslatedValue("IsImportant")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -525,7 +526,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -535,7 +536,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -549,13 +550,13 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_formKey.currentState.validate()) {
                                     if (hosId == null) {
                                       Scaffold.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(
-                                          "Hospital Field Is Required",
+                                          Localization.of(context).getTranslatedValue("HospitalFieldIsRequired"),
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         backgroundColor: Colors.red,
@@ -593,7 +594,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                 Future.delayed(Duration.zero, () async {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
+                        Localization.of(context).getTranslatedValue("AttentionThisDayIsHoliday"),
                         style: TextStyle(color: Colors.black),
                       ),
                       backgroundColor: Colors.orange,
@@ -611,7 +612,7 @@ class _HospitalActualTask extends State<HospitalActualTask> {
                 Future.delayed(Duration.zero, () async {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
+                        Localization.of(context).getTranslatedValue(("AttentionThisDayIsHoliday")),
                         style: TextStyle(color: Colors.black),
                       ),
                       backgroundColor: Colors.orange,

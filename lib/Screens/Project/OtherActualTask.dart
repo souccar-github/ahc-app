@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/actual_bloc.dart';
 import 'package:template/Bloc/Project/bloc/otheractualtask_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ActualModel.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
@@ -73,7 +74,7 @@ class _OtherActualTask extends State<OtherActualTask> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Other Actual Task',
+          Localization.of(context).getTranslatedValue("OtherActualTask"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -128,7 +129,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text: "Day of Month",
+                                                text: Localization.of(context).getTranslatedValue("DayofMonth"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -148,7 +149,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the number of day in month ...",
+                                        Localization.of(context).getTranslatedValue("Typethenumberofdayinmonth"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -165,7 +166,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                             text: TextSpan(
-                                                text: "Other tasks",
+                                                text: Localization.of(context).getTranslatedValue("Othertasks"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -186,7 +187,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                     child: autoCompleteTextField(
                                       new TextEditingController(),
                                       otherList,
-                                      "Choose an other task ...",
+                                      Localization.of(context).getTranslatedValue("Chooseanothertask"),
                                       (value) {
                                         setState(() {
                                           ListItemModel other = state.otherList
@@ -206,7 +207,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Important"),
+                                  Text(Localization.of(context).getTranslatedValue("IsImportant")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -228,7 +229,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 child: Row(children: <Widget>[
                                 isImportant?RichText(
                                             text: TextSpan(
-                                                text: "Note",
+                                                text: Localization.of(context).getTranslatedValue("Note"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -239,7 +240,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                                       ))
                                                 ]),
                                           )
-                                          :  Text("Note"),
+                                          :  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -249,7 +250,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -263,13 +264,13 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_formKey.currentState.validate()) {
                                     if (otherId == null) {
                                       Scaffold.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(
-                                          "Other Task Field Is Required",
+                                          Localization.of(context).getTranslatedValue("OtherTaskFieldIsRequired"),
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         backgroundColor: Colors.red,
@@ -331,7 +332,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 child: Row(children: <Widget>[
                                  RichText(
                                             text: TextSpan(
-                                                text: "Day of Month",
+                                                text: Localization.of(context).getTranslatedValue("DayofMonth"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -351,7 +352,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the number of day in month ...",
+                                        Localization.of(context).getTranslatedValue("Typethenumberofdayinmonth"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -368,7 +369,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 child: Row(children: <Widget>[
                                 RichText(
                                             text: TextSpan(
-                                                text: "Other tasks",
+                                                text: Localization.of(context).getTranslatedValue("Othertasks"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -390,7 +391,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                       new TextEditingController(
                                           text: widget.task.body),
                                       otherList,
-                                      "Choose a other task ...",
+                                      Localization.of(context).getTranslatedValue("Chooseaothertask"),
                                       (value) {
                                         setState(() {
                                           ListItemModel other = state.otherList
@@ -410,7 +411,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                               
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Is Important"),
+                                  Text(Localization.of(context).getTranslatedValue("IsImportant")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -432,7 +433,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 child: Row(children: <Widget>[
                                  isImportant? RichText(
                                             text: TextSpan(
-                                                text: "Note",
+                                                text: Localization.of(context).getTranslatedValue("Note"),
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 children: [
@@ -442,7 +443,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                                         color: Colors.red,
                                                       ))
                                                 ]),
-                                          ): Text("Note"),
+                                          ): Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -452,7 +453,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -466,13 +467,13 @@ class _OtherActualTask extends State<OtherActualTask> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (_formKey.currentState.validate()) {
                                     if (otherId == null) {
                                       Scaffold.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(
-                                          "Other Field Is Required",
+                                          Localization.of(context).getTranslatedValue("OtherFieldIsRequired"),
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         backgroundColor: Colors.red,
@@ -508,7 +509,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                   Future.delayed(Duration.zero, () async {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
+                        Localization.of(context).getTranslatedValue("AttentionThisDayIsHoliday"),
                         style: TextStyle(color: Colors.black),
                       ),
                       backgroundColor: Colors.orange,
@@ -527,7 +528,7 @@ class _OtherActualTask extends State<OtherActualTask> {
                   Future.delayed(Duration.zero, () async {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        "تنبيه : هذا اليوم يوم عطلة ",
+                        Localization.of(context).getTranslatedValue("AttentionThisDayIsHoliday"),
                         style: TextStyle(color: Colors.black),
                       ),
                       backgroundColor: Colors.orange,

@@ -9,6 +9,7 @@ import 'package:template/Bloc/Project/bloc/report_bloc.dart';
 import 'package:template/Bloc/Project/bloc/hosproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/phaproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/physicianproduct_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ActualVisitModel.dart';
 import 'package:template/Widgets/Project/Drawer.dart';
 import 'package:template/Widgets/General/List.dart';
@@ -95,7 +96,7 @@ class _Report extends State<Report> {
       ),
       appBar: AppBar(
         title: Text(
-          'Report',
+          Localization.of(context).getTranslatedValue("Report"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -169,7 +170,7 @@ class _Report extends State<Report> {
                                     Row(
                                       children: [
                                         Icon(Icons.crop_square),
-                                        Text("Name : ",
+                                        Text(Localization.of(context).getTranslatedValue("Name")+" : ",
                                             style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     7, 163, 163, 1),
@@ -181,7 +182,7 @@ class _Report extends State<Report> {
                                     ),
                                     Row(children: [
                                       Icon(Icons.crop_square),
-                                      Text("Address : ",
+                                      Text(Localization.of(context).getTranslatedValue("Address")+" : ",
                                           style: TextStyle(
                                               color: Color.fromRGBO(
                                                   7, 163, 163, 1),
@@ -193,7 +194,7 @@ class _Report extends State<Report> {
                                     Row(
                                       children: [
                                         Icon(Icons.crop_square),
-                                        Text("Rating : ",
+                                        Text(Localization.of(context).getTranslatedValue("Rating")+" : ",
                                             style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     7, 163, 163, 1),
@@ -206,7 +207,7 @@ class _Report extends State<Report> {
                                     Row(
                                       children: [
                                         Icon(Icons.crop_square),
-                                        Text("Number Of Visit : ",
+                                        Text(Localization.of(context).getTranslatedValue("NumberOfVisit")+" : ",
                                             style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     7, 163, 163, 1),
@@ -222,7 +223,7 @@ class _Report extends State<Report> {
                                     Row(
                                       children: [
                                         Icon(Icons.crop_square),
-                                        Text("Dates Of Visit : ",
+                                        Text(Localization.of(context).getTranslatedValue("DatesOfVisit")+" : ",
                                             style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     7, 163, 163, 1),

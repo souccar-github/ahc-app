@@ -8,6 +8,7 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:template/API/Project/Project.dart';
 import 'package:template/Bloc/Project/bloc/planned_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Screens/Project/PlannedReport.dart';
 import 'package:template/Screens/Project/PlannedTask.dart';
@@ -73,7 +74,7 @@ class _PlannedTasks extends State<PlannedTasks> {
           ),
         ],
         title: Text(
-          'Planned Tasks',
+          Localization.of(context).getTranslatedValue("PlannedTasks"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),

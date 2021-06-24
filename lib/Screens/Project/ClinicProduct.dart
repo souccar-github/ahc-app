@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/hosproduct_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ActualModel.dart';
 import 'package:template/Models/Project/DropdownItemModel.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
@@ -109,7 +110,7 @@ class _HosProduct extends State<HosProduct> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Clinic Product',
+          Localization.of(context).getTranslatedValue("ClinicProduct"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -171,7 +172,7 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Count"),
+                                  Text(Localization.of(context).getTranslatedValue("Count")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -181,7 +182,7 @@ class _HosProduct extends State<HosProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the count of products ...",
+                                        Localization.of(context).getTranslatedValue("Typethecountofproducts"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -198,7 +199,7 @@ class _HosProduct extends State<HosProduct> {
                                 child: Row(children: <Widget>[
                                  RichText(
                                     text: TextSpan(
-                                        text:"Products",
+                                        text:Localization.of(context).getTranslatedValue("Products"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -217,7 +218,7 @@ class _HosProduct extends State<HosProduct> {
                                     child: autoCompleteTextField(
                                       new TextEditingController(),
                                       prList,
-                                      "Choose a Product ...",
+                                      Localization.of(context).getTranslatedValue("ChooseaProduct"),
                                       (value) {
                                         setState(() {
                                           ListItemModel product = state.proList
@@ -238,7 +239,7 @@ class _HosProduct extends State<HosProduct> {
                                 child: Row(children: <Widget>[
                                   RichText(
                                     text: TextSpan(
-                                        text:"Adoptions",
+                                        text:Localization.of(context).getTranslatedValue("Adoptions"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -253,7 +254,7 @@ class _HosProduct extends State<HosProduct> {
                                   dropdown(
                                       context,
                                       _adoptionSelectedItem,
-                                      "Adoption",
+                                      Localization.of(context).getTranslatedValue("Adoption"),
                                       _adoptionDropdownMenuItems,
                                       onChangeDropdownItemAdoption),
                                 ]),
@@ -264,14 +265,14 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("ProvidedMaterials"),
+                                  Text(Localization.of(context).getTranslatedValue("ProvidedMaterials")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _providedMaterialSelectedItem,
-                                      "ProvidedMaterial",
+                                      Localization.of(context).getTranslatedValue("ProvidedMaterial"),
                                       _providedMaterialDropdownMenuItems,
                                       onChangeDropdownItemProvidedMaterial),
                                 ]),
@@ -282,14 +283,14 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Complaints"),
+                                  Text(Localization.of(context).getTranslatedValue("Complaints")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _complaintSelectedItem,
-                                      "Complaint",
+                                      Localization.of(context).getTranslatedValue("Complaint"),
                                       _complaintDropdownMenuItems,
                                       onChangeDropdownItemComplaint),
                                 ]),
@@ -300,7 +301,7 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -310,7 +311,7 @@ class _HosProduct extends State<HosProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -324,12 +325,12 @@ class _HosProduct extends State<HosProduct> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (productId == null ||
                                       _adoptionSelectedItem == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Product and Adoption Fields Are Required",
+                                        Localization.of(context).getTranslatedValue("ProductandAdoptionFieldsAreRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,
@@ -414,7 +415,7 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Count"),
+                                  Text(Localization.of(context).getTranslatedValue("Count")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -424,7 +425,7 @@ class _HosProduct extends State<HosProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeDayTextField,
-                                        "Type the count of products ...",
+                                        Localization.of(context).getTranslatedValue("Typethecountofproducts"),
                                         true,
                                         TextInputType.number,
                                         false,
@@ -441,7 +442,7 @@ class _HosProduct extends State<HosProduct> {
                                 child: Row(children: <Widget>[
                                  RichText(
                                     text: TextSpan(
-                                        text:"Products",
+                                        text:Localization.of(context).getTranslatedValue("Products"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -465,7 +466,7 @@ class _HosProduct extends State<HosProduct> {
                                                   state.product.productId)
                                               .title),
                                       prList,
-                                      "Choose a Product ...",
+                                      Localization.of(context).getTranslatedValue("ChooseaProduct"),
                                       (value) {
                                         setState(() {
                                           ListItemModel product = state.proList
@@ -486,7 +487,7 @@ class _HosProduct extends State<HosProduct> {
                                 child: Row(children: <Widget>[
                                  RichText(
                                     text: TextSpan(
-                                        text:"Adoptions",
+                                        text:Localization.of(context).getTranslatedValue("Adoptions"),
                                         style: TextStyle(color: Colors.black),
                                         children: [
                                           TextSpan(
@@ -501,7 +502,7 @@ class _HosProduct extends State<HosProduct> {
                                   dropdown(
                                       context,
                                       _adoptionSelectedItem,
-                                      "Adoption",
+                                      Localization.of(context).getTranslatedValue("Adoption"),
                                       _adoptionDropdownMenuItems,
                                       onChangeDropdownItemAdoption),
                                 ]),
@@ -512,14 +513,15 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("ProvidedMaterials"),
+                                  Text(Localization.of(context).getTranslatedValue("ProvidedMaterials"
+                                  )),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _providedMaterialSelectedItem,
-                                      "ProvidedMaterial",
+                                      Localization.of(context).getTranslatedValue("ProvidedMaterial"),
                                       _providedMaterialDropdownMenuItems,
                                       onChangeDropdownItemProvidedMaterial),
                                 ]),
@@ -530,14 +532,14 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Complaints"),
+                                  Text(Localization.of(context).getTranslatedValue("Complaints")),
                                   SizedBox(
                                     width: 20,
                                   ),
                                   dropdown(
                                       context,
                                       _complaintSelectedItem,
-                                      "Complaint",
+                                      Localization.of(context).getTranslatedValue("Complaint"),
                                       _complaintDropdownMenuItems,
                                       onChangeDropdownItemComplaint),
                                 ]),
@@ -548,7 +550,7 @@ class _HosProduct extends State<HosProduct> {
                               ),
                               DelayedAnimation(
                                 child: Row(children: <Widget>[
-                                  Text("Note"),
+                                  Text(Localization.of(context).getTranslatedValue("Note")),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -558,7 +560,7 @@ class _HosProduct extends State<HosProduct> {
                                         100,
                                     child: textFormField(
                                         onChangeTextField,
-                                        "Type a note ...",
+                                        Localization.of(context).getTranslatedValue("Typeanote"),
                                         false,
                                         TextInputType.multiline,
                                         false,
@@ -572,12 +574,12 @@ class _HosProduct extends State<HosProduct> {
                                 height: 40,
                               ),
                               DelayedAnimation(
-                                child: button("Submit", () {
+                                child: button(Localization.of(context).getTranslatedValue("Submit"), () {
                                   if (productId == null ||
                                       _adoptionSelectedItem == null) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text(
-                                        "Product and Adoption Fields Are Required",
+                                        Localization.of(context).getTranslatedValue("ProductandAdoptionFieldsAreRequired"),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       backgroundColor: Colors.red,

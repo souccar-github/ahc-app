@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'package:template/API/Project/Project.dart';
 import 'package:template/Bloc/Project/bloc/actual_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 import 'package:template/Screens/Project/Clinics.dart';
 import 'package:template/Screens/Project/HospitalActualTask.dart';
@@ -123,9 +124,9 @@ class _ActualTasks extends State<ActualTasks> {
         key: key,
         itemBuilder: (_) => <PopupMenuItem<String>>[
           PopupMenuItem<String>(
-              value: 'Add Physician Visit',
+              value: Localization.of(context).getTranslatedValue("AddPhysicianVisit"),
               child: ListTile(
-                title: Text("Add Physician Visit"),
+                title: Text(Localization.of(context).getTranslatedValue("AddPhysicianVisit")),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => PhysicianActualTask(
@@ -134,9 +135,9 @@ class _ActualTasks extends State<ActualTasks> {
                 leading: Icon(FontAwesomeIcons.stethoscope),
               )),
           PopupMenuItem<String>(
-              value: 'Add Pharmacy Visit',
+              value: Localization.of(context).getTranslatedValue("AddPharmacyVisit") ,
               child: ListTile(
-                title: Text("Add Pharmacy Visit"),
+                title: Text(Localization.of(context).getTranslatedValue("AddPharmacyVisit")),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => PharmacyActualTask(
@@ -145,9 +146,9 @@ class _ActualTasks extends State<ActualTasks> {
                 leading: Icon(FontAwesomeIcons.handHoldingMedical),
               )),
           PopupMenuItem<String>(
-              value: 'Add Hospital Visit',
+              value: Localization.of(context).getTranslatedValue("AddHospitalVisit"),
               child: ListTile(
-                title: Text("Add Hospital Visit"),
+                title: Text(Localization.of(context).getTranslatedValue("AddHospitalVisit")),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => HospitalActualTask(
@@ -156,9 +157,9 @@ class _ActualTasks extends State<ActualTasks> {
                 leading: Icon(FontAwesomeIcons.hospital),
               )),
           PopupMenuItem<String>(
-              value: 'Add Other Task',
+              value: Localization.of(context).getTranslatedValue("AddOtherTask"),
               child: ListTile(
-                title: Text("Add Other Task"),
+                title: Text(Localization.of(context).getTranslatedValue("AddOtherTask")),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => OtherActualTask(
@@ -180,7 +181,7 @@ class _ActualTasks extends State<ActualTasks> {
           ),
         ],
         title: Text(
-          'Actual Tasks',
+          Localization.of(context).getTranslatedValue("ActualTasks"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),

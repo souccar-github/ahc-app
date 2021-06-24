@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'package:template/Bloc/Project/bloc/month_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/MonthModel.dart';
 import 'package:template/Screens/Project/ActualTasks.dart';
 import 'package:template/Screens/Project/PlannedTasks.dart';
@@ -51,7 +52,7 @@ class _Months extends State<Months> {
       ),
       appBar: AppBar(
         title: Text(
-          'Months',
+          Localization.of(context).getTranslatedValue("Months"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
@@ -105,13 +106,13 @@ class _Months extends State<Months> {
                   ),
                   secondaryActions: <Widget>[
                     IconSlideAction(
-                      caption: 'Delete',
+                      caption: Localization.of(context).getTranslatedValue("Delete"),
                       color: Colors.red,
                       icon: Icons.delete,
                       onTap: () => monthBloc.add(DeleteMonth(months[index].Id)),
                     ),
                     IconSlideAction(
-                      caption: 'Update',
+                      caption: Localization.of(context).getTranslatedValue("Update"),
                       color: Colors.orange,
                       icon: Icons.update,
                       onTap: () => showMonthPicker(
@@ -135,9 +136,9 @@ class _Months extends State<Months> {
                       key: btnKey,
                       itemBuilder: (_) => <PopupMenuItem<String>>[
                         PopupMenuItem<String>(
-                            value: 'Planning Tasks',
+                            value: Localization.of(context).getTranslatedValue("PlanningTasks"),
                             child: ListTile(
-                              title: Text("Planning Tasks"),
+                              title: Text(Localization.of(context).getTranslatedValue("PlanningTasks")),
                               onTap: () {
                                 Navigator.of(context).push(
                                     new MaterialPageRoute(
@@ -149,9 +150,9 @@ class _Months extends State<Months> {
                               leading: Icon(Icons.timer),
                             )),
                         PopupMenuItem<String>(
-                            value: 'Actual Tasks',
+                            value: Localization.of(context).getTranslatedValue("ActualTasks"),
                             child: ListTile(
-                              title: Text("Actual Tasks"),
+                              title: Text(Localization.of(context).getTranslatedValue("ActualTasks")),
                               onTap: () {
                                 Navigator.of(context).push(
                                   new MaterialPageRoute(

@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:template/Localization/Localization.dart';
 import 'package:template/Screens/General/SplashScreen.dart';
 
+import 'SharedPref/SharedPref.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,7 +13,9 @@ void main() {
 class MyApp extends StatefulWidget {
   static void setLocale(BuildContext context, Locale locale) {
     _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
-    state.setLocale(locale);
+    Future.delayed(Duration(milliseconds: 0), () async {
+      state.setLocale(locale);
+    });
   }
 
   @override
@@ -77,8 +81,8 @@ class _MyAppState extends State<MyApp> {
       },
       locale: _locale,
       supportedLocales: [
-        const Locale('en', 'US'),
-        const Locale('ar', 'SY'),
+        const Locale('ar'),
+        const Locale('en'),
       ],
       theme: ThemeData(
         iconTheme: IconThemeData(color: Colors.white, size: 25),

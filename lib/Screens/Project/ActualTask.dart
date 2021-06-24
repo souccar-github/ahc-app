@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/Bloc/Project/bloc/actual_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 
 class ActualTask extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _ActualTask extends State<ActualTask> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Actual Task',
+          Localization.of(context).getTranslatedValue("ActualTask"),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
