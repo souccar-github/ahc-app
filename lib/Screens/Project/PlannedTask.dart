@@ -401,7 +401,7 @@ class _PlannedTask extends State<PlannedTask> {
                                               list,
                                               Localization.of(context)
                                                   .getTranslatedValue(
-                                                      "Chooseaphysician..."),
+                                                      "Chooseaphysician"),
                                               (value) {
                                                 setState(() {
                                                   ListItemModel phy = state.list
@@ -503,7 +503,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                   list,
                                                   Localization.of(context)
                                                       .getTranslatedValue(
-                                                          "Chooseapharmacy..."),
+                                                          "Chooseapharmacy"),
                                                   (value) {
                                                 setState(() {
                                                   ListItemModel pha = state.list
@@ -603,7 +603,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                 list,
                                                 Localization.of(context)
                                                     .getTranslatedValue(
-                                                        "Chooseahospital..."),
+                                                        "Chooseahospital"),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel hos = state.list
@@ -673,7 +673,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                 list,
                                                 Localization.of(context)
                                                     .getTranslatedValue(
-                                                        "ChooseanEmployee..."),
+                                                        "ChooseanEmployee"),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel emp = state.list
@@ -743,7 +743,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                 list,
                                                 Localization.of(context)
                                                     .getTranslatedValue(
-                                                        "ChooseaTask..."),
+                                                        "ChooseaTask"),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel other = state.list
@@ -906,7 +906,7 @@ class _PlannedTask extends State<PlannedTask> {
                                     context,
                                     _selectedItem,
                                     Localization.of(context)
-                                        .getTranslatedValue("Task Type"),
+                                        .getTranslatedValue("TaskType"),
                                     _dropdownMenuItems,
                                     onChangeDropdownItemUpdate),
                               ]),
@@ -993,7 +993,7 @@ class _PlannedTask extends State<PlannedTask> {
                                               list,
                                               Localization.of(context)
                                                   .getTranslatedValue(
-                                                      "Chooseaphysician..."),
+                                                      "Chooseaphysician"),
                                               (value) {
                                                 setState(() {
                                                   ListItemModel phy = state.list
@@ -1097,7 +1097,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                   list,
                                                   Localization.of(context)
                                                       .getTranslatedValue(
-                                                          "Chooseapharmacy..."),
+                                                          "Chooseapharmacy"),
                                                   (value) {
                                                 setState(() {
                                                   ListItemModel pha = state.list
@@ -1199,7 +1199,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                 list,
                                                 Localization.of(context)
                                                     .getTranslatedValue(
-                                                        "Chooseahospital..."),
+                                                        "Chooseahospital"),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel hos = state.list
@@ -1271,7 +1271,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                 list,
                                                 Localization.of(context)
                                                     .getTranslatedValue(
-                                                        "ChooseanEmployee..."),
+                                                        "ChooseanEmployee"),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel emp = state.list
@@ -1343,7 +1343,7 @@ class _PlannedTask extends State<PlannedTask> {
                                                 list,
                                                 Localization.of(context)
                                                     .getTranslatedValue(
-                                                        "ChooseaTask..."),
+                                                        "ChooseaTask"),
                                                 (value) {
                                               setState(() {
                                                 ListItemModel other = state.list

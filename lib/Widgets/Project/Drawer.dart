@@ -6,7 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:template/Localization/Localization.dart';
 import 'package:template/Screens/General/SplashScreen.dart';
 import 'package:template/Screens/Project/CopyPlannedToActual.dart';
+import 'package:template/Screens/Project/SettingPage.dart';
 import 'package:template/Screens/Project/CopyPlannedToPlanned.dart';
+import 'package:template/Screens/Project/PlannedTasks.dart';
 import 'package:template/SharedPref/SharedPref.dart';
 
 import '../../main.dart';
@@ -116,20 +118,11 @@ class _AppDrawer extends State<AppDrawer> {
             },
           ),
           _createDrawerItem(
-            icon: FontAwesomeIcons.signOutAlt,
-            text: Localization.of(context).getTranslatedValue("SwitchLanguage"),
+            icon: Icons.settings,
+            text: Localization.of(context).getTranslatedValue("Setting"),
             onTap: () async {
-              var locale = null;
-              locale = await SharedPref.pref.getLocale();
-              if (locale == "en") {
-                MyApp.setLocale(
-                    context, Locale.fromSubtags(languageCode: 'ar'));
-                await SharedPref.pref.setLocale("ar");
-              } else {
-                MyApp.setLocale(
-                    context, Locale.fromSubtags(languageCode: 'en'));
-                await SharedPref.pref.setLocale("en");
-              }
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SettingPage()));
               
             },
           ),

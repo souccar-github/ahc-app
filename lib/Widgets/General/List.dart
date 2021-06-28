@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ListItemModel.dart';
 
 Widget viewList(
@@ -54,13 +55,13 @@ Widget viewList(
       actions: actions(list[index]),
       secondaryActions: <Widget>[
         IconSlideAction(
-          caption: 'Delete',
+          caption: Localization.of(context).getTranslatedValue("Delete"),
           color: Colors.red,
           icon: Icons.delete,
           onTap: () => delete(list[index].id, list[index].type),
         ),
         IconSlideAction(
-          caption: 'Update',
+          caption: Localization.of(context).getTranslatedValue("Update"),
           color: Colors.orange,
           icon: Icons.update,
           onTap: () => update(list[index]),

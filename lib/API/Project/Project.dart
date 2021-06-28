@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:template/API/Statics.dart';
 import 'package:template/Bloc/Project/bloc/physicianproduct_bloc.dart';
 import 'package:template/Bloc/Project/bloc/report_bloc.dart';
+import 'package:template/Localization/Localization.dart';
 import 'package:template/Models/Project/ActualModel.dart';
 import 'package:template/Models/Project/ActualVisitModel.dart';
 import 'package:template/Models/Project/ClinicModel.dart';
@@ -20,6 +22,7 @@ import 'package:template/SharedPref/SharedPref.dart';
 
 class Project {
   Project._();
+  BuildContext context;
   static final Project apiClient = Project._();
   Future<List<MonthModel>> getMonths() async {
     String error;
@@ -30,6 +33,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/month/get", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<MonthModel> months = new List<MonthModel>();
@@ -41,6 +45,10 @@ class Project {
         if (months != null) {
           return months;
         }
+      }else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -63,10 +71,13 @@ class Project {
           .delete(Statics.BaseUrl + "/api/month/delete/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         return "success";
-      } else {
+      }else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+      }else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
       }
@@ -90,10 +101,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(month.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -118,10 +132,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(month.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -145,10 +162,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -167,15 +187,18 @@ class Project {
     try {
       var username = await SharedPref.pref.getUserName();
       var password = await SharedPref.pref.getPassword();
-      final response =
-          await Statics.httpClient.post(Statics.BaseUrl + "/api/month/checkHolidayActual/$monthId/$day",
-              headers: {
-                HttpHeaders.contentTypeHeader: 'application/json',
-                'Authorization': '$username:$password',
-              });
+      final response = await Statics.httpClient.post(
+          Statics.BaseUrl + "/api/month/checkHolidayActual/$monthId/$day",
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
+          });
       if (response.statusCode == 200) {
         var value = response.body;
         return value.toLowerCase() == "true";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -198,6 +221,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/planned/get/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<DateModel> events = new List<DateModel>();
@@ -209,6 +233,8 @@ class Project {
         if (events != null) {
           return events;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -231,6 +257,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/planned/getDayTasks/$id/$day", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> events = new List<ListItemModel>();
@@ -242,6 +269,8 @@ class Project {
         if (events != null) {
           return events;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -264,6 +293,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/actual/getDayTasks/$id/$day", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> events = new List<ListItemModel>();
@@ -275,6 +305,8 @@ class Project {
         if (events != null) {
           return events;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -297,6 +329,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/actual/get/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<DateModel> events = new List<DateModel>();
@@ -308,6 +341,8 @@ class Project {
         if (events != null) {
           return events;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -330,6 +365,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/hospital/get", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -341,6 +377,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -363,6 +401,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/hospital/getShort", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -374,6 +413,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -396,6 +437,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/physician/get", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -407,6 +449,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -429,6 +473,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/physician/getShort", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -440,6 +485,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -462,6 +509,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/pharmacy/get", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -473,6 +521,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -495,6 +545,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/pharmacy/getShort", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -506,6 +557,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -528,6 +581,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/employee/get", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -536,13 +590,15 @@ class Project {
           ListItemModel h = ListItemModel.fromJson(_items[i]);
           items.add(h);
         }
-        if (items.length == 0){
-          return Future.error("لا يمكن إدخال مهمة تقييم لعدم وجود موظفين تحت إشرافك");
+        if (items.length == 0) {
+          return Future.error(
+              "لا يمكن إدخال مهمة تقييم لعدم وجود موظفين تحت إشرافك");
         }
         if (items != null) {
           return items;
         }
-        
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -565,6 +621,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/otherTask/get", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -576,6 +633,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -598,11 +657,14 @@ class Project {
           .get(Statics.BaseUrl + "/api/planned/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         PlanningTaskModel task =
             PlanningTaskModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -625,9 +687,12 @@ class Project {
           .delete(Statics.BaseUrl + "/api/planned/delete/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -651,10 +716,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -677,6 +745,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/reference/GetPeriods", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
@@ -688,6 +757,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -706,11 +777,13 @@ class Project {
     try {
       var username = await SharedPref.pref.getUserName();
       var password = await SharedPref.pref.getPassword();
-      final response = await Statics.httpClient
-          .get(Statics.BaseUrl + "/api/reference/GetProvidedMaterial", headers: {
-        HttpHeaders.contentTypeHeader: 'application/json',
-        'Authorization': '$username:$password',
-      });
+      final response = await Statics.httpClient.get(
+          Statics.BaseUrl + "/api/reference/GetProvidedMaterial",
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
+          });
       if (response.statusCode == 200) {
         List<ListItemModel> items = new List<ListItemModel>();
         List _items = json.decode(response.body);
@@ -721,6 +794,8 @@ class Project {
         if (items != null) {
           return items;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -744,10 +819,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -771,10 +849,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -798,6 +879,7 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -809,6 +891,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -831,6 +915,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/pharmacyProduct/get/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -842,6 +927,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -864,6 +951,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/clinicProduct/get/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -875,6 +963,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -897,6 +987,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/hospitalClinicVisit/get/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -908,6 +999,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -930,9 +1023,12 @@ class Project {
           .delete(Statics.BaseUrl + "/api/pharmacyVisit/delete/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -955,9 +1051,12 @@ class Project {
           .delete(Statics.BaseUrl + "/api/physicianVisit/delete/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -980,9 +1079,12 @@ class Project {
           .delete(Statics.BaseUrl + "/api/hospitalVisit/delete/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1005,10 +1107,13 @@ class Project {
           .get(Statics.BaseUrl + "/api/physicianVisit/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1031,10 +1136,13 @@ class Project {
           .get(Statics.BaseUrl + "/api/otherTask/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1057,11 +1165,14 @@ class Project {
           .get(Statics.BaseUrl + "/api/pharmacyProduct/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         PhaProductModel task =
             PhaProductModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1084,11 +1195,14 @@ class Project {
           .get(Statics.BaseUrl + "/api/physicianProduct/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         PhyProductModel task =
             PhyProductModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1111,11 +1225,14 @@ class Project {
           .get(Statics.BaseUrl + "/api/clinicProduct/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         HosProductModel task =
             HosProductModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1139,10 +1256,13 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         ClinicModel task = ClinicModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1165,10 +1285,13 @@ class Project {
           .get(Statics.BaseUrl + "/api/pharmacyVisit/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1191,10 +1314,13 @@ class Project {
           .get(Statics.BaseUrl + "/api/hospitalVisit/getById/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1217,6 +1343,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/reference/getProducts", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -1228,6 +1355,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1241,16 +1370,19 @@ class Project {
     }
   }
 
-  Future<List<ListItemModel>> getPlannedToActualServiceTasks(String date) async {
+  Future<List<ListItemModel>> getPlannedToActualServiceTasks(
+      String date) async {
     String error;
     try {
       var username = await SharedPref.pref.getUserName();
       var password = await SharedPref.pref.getPassword();
-      final response = await Statics.httpClient
-          .get(Statics.BaseUrl + "/api/Service/getPlannedTasks/$date", headers: {
-        HttpHeaders.contentTypeHeader: 'application/json',
-        'Authorization': '$username:$password',
-      });
+      final response = await Statics.httpClient.get(
+          Statics.BaseUrl + "/api/Service/getPlannedTasks/$date",
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
+          });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
         List list = json.decode(response.body);
@@ -1261,6 +1393,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1274,16 +1408,19 @@ class Project {
     }
   }
 
-  Future<List<ListItemModel>> getPlannedToPlannedServiceTasks(String fromDate, String toDate) async {
+  Future<List<ListItemModel>> getPlannedToPlannedServiceTasks(
+      String fromDate, String toDate) async {
     String error;
     try {
       var username = await SharedPref.pref.getUserName();
       var password = await SharedPref.pref.getPassword();
-      final response = await Statics.httpClient
-          .get(Statics.BaseUrl + "/api/Service/getTasks/$fromDate/$toDate", headers: {
-        HttpHeaders.contentTypeHeader: 'application/json',
-        'Authorization': '$username:$password',
-      });
+      final response = await Statics.httpClient.get(
+          Statics.BaseUrl + "/api/Service/getTasks/$fromDate/$toDate",
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
+          });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
         List list = json.decode(response.body);
@@ -1294,6 +1431,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1316,6 +1455,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/reference/getAdoptions", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -1327,6 +1467,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1349,6 +1491,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/reference/getComplaints", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -1360,6 +1503,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1382,6 +1527,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/reference/getClinics", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -1393,6 +1539,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1415,6 +1563,7 @@ class Project {
           .get(Statics.BaseUrl + "/api/reference/getVisitTypes", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         List<ListItemModel> _list = new List<ListItemModel>();
@@ -1426,6 +1575,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1449,6 +1600,7 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         List<ActualVisitModel> _list = new List<ActualVisitModel>();
@@ -1460,6 +1612,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1483,6 +1637,7 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         List<ActualVisitModel> _list = new List<ActualVisitModel>();
@@ -1494,6 +1649,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1517,6 +1674,7 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         List<ActualVisitModel> _list = new List<ActualVisitModel>();
@@ -1528,6 +1686,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1546,12 +1706,12 @@ class Project {
     try {
       var username = await SharedPref.pref.getUserName();
       var password = await SharedPref.pref.getPassword();
-      final response = await Statics.httpClient.get(
-          Statics.BaseUrl + "/api/otherTask/getReportData/$id",
-          headers: {
-            HttpHeaders.contentTypeHeader: 'application/json',
-            'Authorization': '$username:$password',
-          });
+      final response = await Statics.httpClient
+          .get(Statics.BaseUrl + "/api/otherTask/getReportData/$id", headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
+      });
       if (response.statusCode == 200) {
         List<ActualVisitModel> _list = new List<ActualVisitModel>();
         List list = json.decode(response.body);
@@ -1562,6 +1722,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1580,12 +1742,12 @@ class Project {
     try {
       var username = await SharedPref.pref.getUserName();
       var password = await SharedPref.pref.getPassword();
-      final response = await Statics.httpClient.get(
-          Statics.BaseUrl + "/api/planned/getReportData/$id",
-          headers: {
-            HttpHeaders.contentTypeHeader: 'application/json',
-            'Authorization': '$username:$password',
-          });
+      final response = await Statics.httpClient
+          .get(Statics.BaseUrl + "/api/planned/getReportData/$id", headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
+      });
       if (response.statusCode == 200) {
         List<ActualVisitModel> _list = new List<ActualVisitModel>();
         List list = json.decode(response.body);
@@ -1596,6 +1758,8 @@ class Project {
         if (_list != null) {
           return _list;
         }
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1619,10 +1783,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(product.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1646,10 +1813,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(product.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1673,10 +1843,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(clinic.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1700,10 +1873,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(tasks));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1727,10 +1903,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(tasks));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1754,10 +1933,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(product.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1781,9 +1963,12 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1807,9 +1992,12 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1832,9 +2020,12 @@ class Project {
           .delete(Statics.BaseUrl + "/api/clinicProduct/delete/$id", headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         'Authorization': '$username:$password',
+        'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
       });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1858,9 +2049,12 @@ class Project {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             'Authorization': '$username:$password',
+            'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
           });
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1884,10 +2078,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1911,10 +2108,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1938,10 +2138,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1965,10 +2168,13 @@ class Project {
               headers: {
                 HttpHeaders.contentTypeHeader: 'application/json',
                 'Authorization': '$username:$password',
+                'locale': await SharedPref.pref.getLocale() == "en"?"49":"14"
               },
               body: jsonEncode(task.toJson()));
       if (response.statusCode == 200) {
         return "success";
+      } else if (response.statusCode == 401) {
+        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
