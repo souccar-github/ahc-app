@@ -22,7 +22,6 @@ import 'package:template/SharedPref/SharedPref.dart';
 
 class Project {
   Project._();
-  BuildContext context;
   static final Project apiClient = Project._();
   Future<List<MonthModel>> getMonths() async {
     String error;
@@ -45,10 +44,8 @@ class Project {
         if (months != null) {
           return months;
         }
-      }else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -76,7 +73,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       }else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       }else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -107,7 +104,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -138,7 +135,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -168,7 +165,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -198,7 +195,7 @@ class Project {
         var value = response.body;
         return value.toLowerCase() == "true";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -234,7 +231,7 @@ class Project {
           return events;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -270,7 +267,7 @@ class Project {
           return events;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -306,7 +303,7 @@ class Project {
           return events;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -342,7 +339,7 @@ class Project {
           return events;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -378,7 +375,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -414,7 +411,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -450,7 +447,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -486,7 +483,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -522,7 +519,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -558,7 +555,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -598,7 +595,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -634,7 +631,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -664,7 +661,7 @@ class Project {
             PlanningTaskModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -692,7 +689,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -722,7 +719,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -758,7 +755,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -795,7 +792,7 @@ class Project {
           return items;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -825,7 +822,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -855,7 +852,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -892,7 +889,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -928,7 +925,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -964,7 +961,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1000,7 +997,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1028,7 +1025,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1056,7 +1053,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1084,7 +1081,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1113,7 +1110,7 @@ class Project {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1142,7 +1139,7 @@ class Project {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1172,7 +1169,7 @@ class Project {
             PhaProductModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1202,7 +1199,7 @@ class Project {
             PhyProductModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1232,7 +1229,7 @@ class Project {
             HosProductModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1262,7 +1259,7 @@ class Project {
         ClinicModel task = ClinicModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1291,7 +1288,7 @@ class Project {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1320,7 +1317,7 @@ class Project {
         ActualModel task = ActualModel.fromJson(json.decode(response.body));
         return task;
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1356,7 +1353,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1394,7 +1391,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1432,7 +1429,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1468,7 +1465,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1504,7 +1501,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1540,7 +1537,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1576,7 +1573,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1613,7 +1610,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1650,7 +1647,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1687,7 +1684,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1723,7 +1720,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1759,7 +1756,7 @@ class Project {
           return _list;
         }
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1789,7 +1786,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1819,7 +1816,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1849,7 +1846,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1879,7 +1876,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1909,7 +1906,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1939,7 +1936,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1968,7 +1965,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -1997,7 +1994,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -2025,7 +2022,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -2054,7 +2051,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -2084,7 +2081,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -2114,7 +2111,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -2144,7 +2141,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");
@@ -2174,7 +2171,7 @@ class Project {
       if (response.statusCode == 200) {
         return "success";
       } else if (response.statusCode == 401) {
-        return Future.error(Localization.of(context).getTranslatedValue("Unauthorized"));
+        return Future.error("Unauthorized");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error");

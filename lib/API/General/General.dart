@@ -27,7 +27,7 @@ class General {
       if (response.statusCode == 200) {
         return "success";
       }else if (response.statusCode == 401) {
-        return Future.error("Error in username or password");
+        return Future.error("username or password is not correct");
       } else {
         error = (jsonDecode(response.body))["Message"] as String;
         return Future.error(error ?? "Unknown Error"); 
